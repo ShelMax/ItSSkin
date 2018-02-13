@@ -1,4 +1,4 @@
-package kr.sofac.itsskin.ui
+package kr.sofac.itsskin.ui.navigation
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView

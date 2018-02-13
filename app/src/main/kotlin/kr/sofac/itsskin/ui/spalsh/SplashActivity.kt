@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import kr.sofac.itsskin.R
-import kr.sofac.itsskin.ui.NavigationActivity
+import kr.sofac.itsskin.ui.navigation.NavigationActivity
 
 class SplashActivity : AppCompatActivity() {
 

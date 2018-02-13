@@ -24,7 +24,7 @@
         <activity android:name=".ui.MainActivity"/>
 
         <activity
-            android:name=".ui.NavigationActivity"
+            android:name=".ui.navigation.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme"/>
 
