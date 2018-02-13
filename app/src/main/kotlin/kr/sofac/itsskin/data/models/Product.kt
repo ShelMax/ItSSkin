@@ -1,8 +1,48 @@
 package kr.sofac.itsskin.data.models
 
-/**
- * Created by Maxim on 2/13/2018.
- */
-class Product {
+import com.google.gson.annotations.SerializedName
 
-}
+data class Product(@SerializedName("annotation")
+                   var annotation: String? = "",
+                   @SerializedName("image")
+                   var image: Image?,
+                   @SerializedName("featured")
+                   var featured: String? = "",
+                   @SerializedName("images")
+                   var images: List<ImagesItem>?,
+                   @SerializedName("visible")
+                   var visible: String? = "",
+                   @SerializedName("meta_title")
+                   var metaTitle: String? = "",
+                   @SerializedName("created")
+                   var created: String? = "",
+                   @SerializedName("variants")
+                   var variants: HashMap<String?, Variant?>,
+                   @SerializedName("collection")
+                   var collection: Collection?,
+                   @SerializedName("body")
+                   var body: String? = "",
+                   @SerializedName("meta_keywords")
+                   var metaKeywords: String? = "",
+                   @SerializedName("url")
+                   var url: String? = "",
+                   @SerializedName("related_products")
+                   var relatedProducts: List<Product>?,
+                   @SerializedName("brand_id")
+                   var brandId: String? = "",
+                   @SerializedName("collection_id")
+                   var collectionId: String? = "",
+                   @SerializedName("meta_description")
+                   var metaDescription: String? = "",
+                   @SerializedName("features")
+                   var features: List<FeaturesItem>?,
+                   @SerializedName("name")
+                   var name: String? = "",
+                   @SerializedName("variant")
+                   var variant: Variant?,
+                   @SerializedName("id")
+                   var id: String? = "",
+                   @SerializedName("position")
+                   var position: String? = "",
+                   @SerializedName("brand")
+                   var brand: String? = "")
