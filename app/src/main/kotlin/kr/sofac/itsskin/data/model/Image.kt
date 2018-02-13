@@ -1,4 +1,4 @@
-package kr.sofac.itsskin.data.models
+package kr.sofac.itsskin.data.model
 
 import com.google.gson.annotations.SerializedName
 
