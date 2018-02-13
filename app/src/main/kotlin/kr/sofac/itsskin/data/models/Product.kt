@@ -9,7 +9,7 @@ data class Product(@SerializedName("annotation")
                    @SerializedName("featured")
                    var featured: String? = "",
                    @SerializedName("images")
-                   var images: List<ImagesItem>?,
+                   var images: List<Image>?,
                    @SerializedName("visible")
                    var visible: String? = "",
                    @SerializedName("meta_title")
