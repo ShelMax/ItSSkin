@@ -1,9 +1,11 @@
-package kr.sofac.itsskin
+package kr.sofac.itsskin.ui.spalsh
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import kr.sofac.itsskin.R
+import kr.sofac.itsskin.ui.NavigationActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -20,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startWebActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, NavigationActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
         finishAffinity()

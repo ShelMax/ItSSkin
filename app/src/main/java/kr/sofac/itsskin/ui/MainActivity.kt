@@ -1,4 +1,4 @@
-package kr.sofac.itsskin
+package kr.sofac.itsskin.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kr.sofac.itsskin.R
 
 class MainActivity : AppCompatActivity() {
 
