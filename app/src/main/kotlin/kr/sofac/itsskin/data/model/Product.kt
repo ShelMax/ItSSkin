@@ -17,9 +17,7 @@ data class Product(@SerializedName("annotation")
                    @SerializedName("created")
                    var created: String? = "",
                    @SerializedName("variants")
-                   var variants: HashMap<String?, Variant?>,
-                   @SerializedName("collection")
-                   var collection: Collection?,
+                   var variants: List<Variant>,
                    @SerializedName("body")
                    var body: String? = "",
                    @SerializedName("meta_keywords")
@@ -30,8 +28,6 @@ data class Product(@SerializedName("annotation")
                    var relatedProducts: List<Product>?,
                    @SerializedName("brand_id")
                    var brandId: String? = "",
-                   @SerializedName("collection_id")
-                   var collectionId: String? = "",
                    @SerializedName("meta_description")
                    var metaDescription: String? = "",
                    @SerializedName("features")
