@@ -1,6 +1,6 @@
 package kr.sofac.itsskin.data.network
 
-import kr.sofac.itsskin.data.RequestCallback
+import kr.sofac.itsskin.data.model.callback.RequestCallback
 import kr.sofac.itsskin.data.model.Category
 import kr.sofac.itsskin.data.network.dto.DTO
 import kr.sofac.itsskin.data.model.Product

@@ -16,7 +16,7 @@ class RetrofitManager {
                     .addInterceptor(logging)
                     .build()
             return Retrofit.Builder()
-                    .baseUrl(ServerConfig.BASE_URL)
+                    .baseUrl(ServerConfig.REQUEST_URL)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

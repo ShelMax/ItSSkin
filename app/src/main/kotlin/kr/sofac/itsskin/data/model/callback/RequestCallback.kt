@@ -1,4 +1,4 @@
-package kr.sofac.itsskin.data
+package kr.sofac.itsskin.data.model.callback
 
 interface RequestCallback<T> {
     fun onSuccess(data : T)
