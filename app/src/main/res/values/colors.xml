@@ -3,5 +3,7 @@
     <color name="colorPrimary">#3e3b3b</color>
     <color name="colorPrimaryDark">#211f1f</color>
     <color name="colorAccent">#ffffff</color>
+
+    <color name="innerCategory">#FF6C6B6B</color>
     <!--<color name="colorBackButton">#66ff4e4e</color>-->
 </resources>

@@ -22,7 +22,7 @@ class GridFragment : Fragment(), NavigationGridContract.View {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_grid, container, false)
         products = arrayListOf()
-        adapter = GridAdapter(products, object : GridCallback{
+        adapter = GridAdapter(products, object : GridCallback {
             override fun itemClick(position: Int) {
 
             }
@@ -30,7 +30,7 @@ class GridFragment : Fragment(), NavigationGridContract.View {
         view.gridRecycler.layoutManager = LinearLayoutManager(activity)
         view.gridRecycler.adapter = adapter
         presenter = NavigationGridPresenter(this)
-        presenter.loadProducts()
+        presenter.loadDefaultProducts()
         return view
     }
 
@@ -42,5 +42,9 @@ class GridFragment : Fragment(), NavigationGridContract.View {
 
     override fun onLoadError(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun loadCategoryProducts(categoryURL : String){
+        presenter.loadCategoryProducts(categoryURL)
     }
 }

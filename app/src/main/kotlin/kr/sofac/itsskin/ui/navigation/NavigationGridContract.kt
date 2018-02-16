@@ -10,6 +10,7 @@ interface NavigationGridContract {
     }
 
     interface Presenter{
-        fun loadProducts()
+        fun loadDefaultProducts()
+        fun loadCategoryProducts(categoryURL : String)
     }
 }
