@@ -9,7 +9,7 @@ class RetrofitManager {
 
     companion object {
 
-        fun getApiService():APIService{
+        fun getApiService(): APIService {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder()

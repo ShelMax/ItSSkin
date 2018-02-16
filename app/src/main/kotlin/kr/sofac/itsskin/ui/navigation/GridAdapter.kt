@@ -27,7 +27,7 @@ class GridAdapter(private val products: List<Product>, private val callback : Gr
         GlideApp.with(holder.itemView)
                 .load(ServerConfig.IMAGE_URL + products[position*2].image?.filename)
                 .override(400,400)
-                .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
+//                .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
                 .into(holder.itemView.imageFirst)
         holder.itemView.titleFirst.text = products[position*2].metaTitle
         holder.itemView.priceFirst.text = products[position*2].variant?.price
@@ -35,7 +35,7 @@ class GridAdapter(private val products: List<Product>, private val callback : Gr
         if (position * 2 != products.size - 1) {
             GlideApp.with(holder.itemView)
                     .load(ServerConfig.IMAGE_URL + products[position*2 + 1].image?.filename)
-                    .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
+//                    .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
                     .override(400,400)
                     .into(holder.itemView.imageSecond)
             holder.itemView.titleSecond.text = products[position * 2 + 1].metaTitle
