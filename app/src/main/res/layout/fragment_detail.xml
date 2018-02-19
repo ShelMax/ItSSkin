@@ -1,39 +1,48 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    tools:context="kr.sofac.itsskin.ui.detail.ProductDetailFragment">
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+
+        <ImageView
+            android:id="@+id/mainImageProduct"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/chevronLeft"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mainImageProduct"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainImageProduct"
+            app:srcCompat="@drawable/chevron_left" />
+
+        <ImageView
+            android:id="@+id/chevronRight"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mainImageProduct"
+            app:layout_constraintEnd_toEndOf="@+id/mainImageProduct"
+
+            app:layout_constraintTop_toTopOf="@+id/mainImageProduct"
+            app:srcCompat="@drawable/chevron_right" />
 
 
-    <ImageView
-        android:id="@+id/mainImageProduct"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
 
-    <ImageView
-        android:id="@+id/chevronLeft"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mainImageProduct"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainImageProduct"
-        app:srcCompat="@drawable/chevron_left" />
 
-    <ImageView
-        android:id="@+id/chevronRight"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mainImageProduct"
-        app:layout_constraintEnd_toEndOf="@+id/mainImageProduct"
 
-        app:layout_constraintTop_toTopOf="@+id/mainImageProduct"
-        app:srcCompat="@drawable/chevron_right" />
 
-</android.support.constraint.ConstraintLayout>
