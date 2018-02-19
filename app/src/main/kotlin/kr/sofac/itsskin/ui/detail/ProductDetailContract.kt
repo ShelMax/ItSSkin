@@ -7,7 +7,7 @@ import kr.sofac.itsskin.data.model.Product
 /**
  * Created by Maxim on 2/14/2018.
  */
-interface DetailContract {
+interface ProductDetailContract {
 
     interface View: BaseView<Presenter> {
         val isActive: Boolean

@@ -4,13 +4,16 @@ import kr.sofac.itsskin.data.model.Product
 
 interface NavigationGridContract {
 
-    interface View{
-        fun onProductsLoaded(products : MutableList<Product>)
-        fun onLoadError(message : String)
+    interface View {
+        fun onProductsLoaded(products: MutableList<Product>)
+        fun onLoadError(message: String)
+        fun onShowToast(message: String)
+        fun startDetailProductActivity(productId: String?)
     }
 
-    interface Presenter{
+    interface Presenter {
         fun loadDefaultProducts()
-        fun loadCategoryProducts(categoryURL : String)
+        fun loadCategoryProducts(categoryURL: String)
+        fun onItemClick(productId: String?)
     }
 }

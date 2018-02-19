@@ -26,7 +26,7 @@
             android:label="@string/title_activity_navigation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".ui.detail.DetailActivity"/>
+        <activity android:name=".ui.detail.ProductDetailActivity"/>
     </application>
 
 </manifest>
