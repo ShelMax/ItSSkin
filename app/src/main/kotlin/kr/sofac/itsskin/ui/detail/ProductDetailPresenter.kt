@@ -9,11 +9,15 @@ class ProductDetailPresenter(
 ) : ProductDetailContract.Presenter {
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
-    override fun addProductToShopCart(){}
+    override fun addProductToShopCart(){
 
-    override fun clickShowReview(){}
+    }
+
+    override fun clickShowReview(){
+
+    }
 
 }

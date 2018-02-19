@@ -18,6 +18,7 @@ class ProductDetailActivity : AppCompatActivity() {
         setupActionBar(R.id.toolbar){
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setDisplayShowTitleEnabled(false)
         }
 
         val productDetailFragment = supportFragmentManager.findFragmentById(R.id.contentFrame) as ProductDetailFragment?
