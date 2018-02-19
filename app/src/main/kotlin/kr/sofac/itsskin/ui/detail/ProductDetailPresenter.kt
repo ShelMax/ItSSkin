@@ -12,8 +12,8 @@ class ProductDetailPresenter(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun clickBack() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun addProductToShopCart(){}
+
+    override fun clickShowReview(){}
 
 }

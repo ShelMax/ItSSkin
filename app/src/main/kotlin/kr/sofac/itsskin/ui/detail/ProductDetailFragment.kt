@@ -27,13 +27,22 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
     }
 
 
-    override fun showProduct(product: Product){
+    override fun showProduct(product: Product) {
 
     }
 
-    override fun showToast(toast: String){}
 
-    override fun hideToast(){}
+    override fun showComments() {}
+
+
+    override fun showLoadingIndicator() {}
+
+
+    override fun hideLoadingIndicator() {}
+
+
+    override fun showToast(toast: String) {}
+
 
     companion object {
 
@@ -47,4 +56,5 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
                 }
     }
 
-}// Required empty public constructor
+
+}

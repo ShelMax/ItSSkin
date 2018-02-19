@@ -9,18 +9,27 @@ import kr.sofac.itsskin.data.model.Product
  */
 interface ProductDetailContract {
 
-    interface View: BaseView<Presenter> {
+    interface View : BaseView<Presenter> {
         val isActive: Boolean
 
         fun showProduct(product: Product)
 
         fun showToast(toast: String)
 
-        fun hideToast()
+        fun showComments()
+
+        fun showLoadingIndicator()
+
+        fun hideLoadingIndicator()
+
     }
 
-    interface Presenter :BasePresenter {
-        fun clickBack()
+    interface Presenter : BasePresenter {
+
+        fun addProductToShopCart()
+
+        fun clickShowReview()
+
     }
 
 
