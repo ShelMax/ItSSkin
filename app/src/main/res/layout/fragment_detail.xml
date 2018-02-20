@@ -4,43 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/mainImageProduct"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/logo" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mainImageRecycler"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
 
-        <ImageView
-            android:id="@+id/chevronLeft"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mainImageProduct"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/mainImageProduct"
-            app:srcCompat="@drawable/chevron_left" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/chevronRight"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mainImageProduct"
-            app:layout_constraintEnd_toEndOf="@+id/mainImageProduct"
+            <ImageView
+                android:id="@+id/chevronLeft"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="@+id/mainImageRecycler"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mainImageRecycler"
+                app:srcCompat="@drawable/chevron_left" />
 
-            app:layout_constraintTop_toTopOf="@+id/mainImageProduct"
-            app:srcCompat="@drawable/chevron_right" />
+            <ImageView
+                android:id="@+id/chevronRight"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="@+id/mainImageRecycler"
+                app:layout_constraintEnd_toEndOf="@+id/mainImageRecycler"
+                app:layout_constraintTop_toTopOf="@+id/mainImageRecycler"
+                app:srcCompat="@drawable/chevron_right" />
 
-
-    </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
 
 

@@ -1,19 +1,15 @@
 package kr.sofac.itsskin.ui.navigation
 
 import android.graphics.Color
-import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.category_recycler.view.*
+import kotlinx.android.synthetic.main.item_category.view.*
 import kr.sofac.itsskin.R
 import kr.sofac.itsskin.data.model.Category
-import kotlinx.android.synthetic.main.item_category.view.*
 import kr.sofac.itsskin.data.model.callback.CategoryCallback
-import android.widget.LinearLayout
 
 class CategoryAdapter(private val categories : List<Category>,
                       private val isTopCategory : Boolean,

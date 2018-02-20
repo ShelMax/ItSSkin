@@ -2,6 +2,7 @@ package kr.sofac.itsskin.ui.detail
 
 import kr.sofac.itsskin.BasePresenter
 import kr.sofac.itsskin.BaseView
+import kr.sofac.itsskin.data.model.Image
 import kr.sofac.itsskin.data.model.Product
 
 /**
@@ -12,7 +13,9 @@ interface ProductDetailContract {
     interface View : BaseView<Presenter> {
         val isActive: Boolean
 
-        fun showProduct(product: Product)
+        fun showProductDescription(product: Product)
+
+        fun showImageScroller(listImage: List<Image>)
 
         fun showToast(toast: String)
 

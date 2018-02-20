@@ -1,15 +1,38 @@
 package kr.sofac.itsskin.ui.detail
 
+import kr.sofac.itsskin.data.model.Product
+import kr.sofac.itsskin.data.model.callback.RequestCallback
+import kr.sofac.itsskin.data.network.RequestManager
+import kr.sofac.itsskin.data.network.dto.DTO
+
 /**
  * Created by Maxim on 2/14/2018.
  */
 class ProductDetailPresenter(
-        private val productId: String,
+        private val productUrl: String,
         private val productDetailView: ProductDetailContract.View
 ) : ProductDetailContract.Presenter {
 
     override fun start() {
+        openProduct()
+    }
 
+    fun openProduct(){
+        if(productUrl.isEmpty()){
+            productDetailView.showToast("Not have product for view!")
+            return
+        }
+        productDetailView.showLoadingIndicator()
+        RequestManager.getProduct(DTO().setProductURL(""), object : RequestCallback<Product> {
+            override fun onSuccess(data: Product) {
+
+            }
+
+            override fun onError(message: String) {
+
+            }
+
+        })
     }
 
     override fun addProductToShopCart(){
