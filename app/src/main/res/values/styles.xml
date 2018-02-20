@@ -12,4 +12,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="ThemeToolbar" parent="AppTheme">
+        <!-- navigation icon color -->
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <!-- color of the menu overflow icon -->
+        <item name="android:textColorSecondary">@color/colorWhite</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+    </style>
+
+
 </resources>

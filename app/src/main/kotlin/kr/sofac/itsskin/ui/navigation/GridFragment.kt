@@ -1,5 +1,6 @@
 package kr.sofac.itsskin.ui.navigation
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -12,6 +13,8 @@ import kr.sofac.itsskin.R
 import kr.sofac.itsskin.data.model.Product
 import kr.sofac.itsskin.data.model.callback.GridCallback
 import kr.sofac.itsskin.util.AppPreference
+import kr.sofac.itsskin.ui.detail.ProductDetailActivity
+import kr.sofac.itsskin.util.Constants
 
 class GridFragment : Fragment(), NavigationGridContract.View {
 
@@ -33,6 +36,7 @@ class GridFragment : Fragment(), NavigationGridContract.View {
             override fun addToCartClick(position: Int) {
                 appPreference.addProductToCart(products[position])
                 Toast.makeText(activity, "Product added to cart", Toast.LENGTH_SHORT).show()
+               presenter.onItemClick(products[position].id)
             }
         })
         view.gridRecycler.layoutManager = LinearLayoutManager(activity)
@@ -52,7 +56,17 @@ class GridFragment : Fragment(), NavigationGridContract.View {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onShowToast(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    }
+
     fun loadCategoryProducts(categoryURL : String){
         presenter.loadCategoryProducts(categoryURL)
+    }
+
+    override fun startDetailProductActivity(productId: String?) {
+        val intent = Intent(activity, ProductDetailActivity::class.java)
+        intent.putExtra(Constants.PRODUCT_ID, productId)
+        startActivity(intent)
     }
 }

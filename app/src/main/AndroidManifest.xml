@@ -25,9 +25,9 @@
             android:name=".ui.navigation.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".ui.detail.DetailActivity" />
-        <activity android:name=".ui.cart.CartActivity"></activity>
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.detail.ProductDetailActivity"/>
+        <activity android:name=".ui.cart.CartActivity"/>
     </application>
 
 </manifest>
