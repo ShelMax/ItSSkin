@@ -16,8 +16,8 @@ data class Product(@SerializedName("annotation")
                    var metaTitle: String? = "",
                    @SerializedName("created")
                    var created: String? = "",
-                   @SerializedName("variants")
-                   var variants: List<Variant>,
+//                   @SerializedName("variants")
+//                   var variants: List<Variant>,
                    @SerializedName("body")
                    var body: String? = "",
                    @SerializedName("meta_keywords")

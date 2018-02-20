@@ -13,7 +13,7 @@ interface ProductDetailContract {
     interface View : BaseView<Presenter> {
         val isActive: Boolean
 
-        fun showProductDescription(product: Product)
+        fun fillProductDescription(product: Product)
 
         fun showSameProductScroller(listProduct: List<Product>)
 

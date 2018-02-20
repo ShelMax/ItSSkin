@@ -8,6 +8,7 @@ import kr.sofac.itsskin.data.network.dto.DTO
 /**
  * Created by Maxim on 2/14/2018.
  */
+
 class ProductDetailPresenter(
         private val productUrl: String,
         private val productDetailView: ProductDetailContract.View
@@ -27,13 +28,13 @@ class ProductDetailPresenter(
             return
         }
         productDetailView.showLoadingIndicator()
-        RequestManager.getProduct(DTO().setProductURL(""), object : RequestCallback<Product> {
+         RequestManager.getProduct(DTO().setProductURL(productUrl), object : RequestCallback<Product> {
             override fun onSuccess(data: Product) {
                 productDetailView.showImageScroller(ImageScrollerAdapter(data.images?: listOf()))
             }
 
             override fun onError(message: String) {
-                productDetailView.showToast("Cat'n loading product")
+
             }
 
         })

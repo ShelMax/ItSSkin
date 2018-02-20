@@ -3,9 +3,11 @@ package kr.sofac.itsskin.ui.detail
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskin.R
 import kr.sofac.itsskin.data.model.Product
@@ -30,7 +32,7 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         return view
     }
 
-    override fun showProductDescription(product: Product){
+    override fun fillProductDescription(product: Product){
 
     }
 
@@ -39,8 +41,8 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
     }
 
     override fun showImageScroller(adapter: ImageScrollerAdapter) {
+        mainImageRecycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, true)
         mainImageRecycler.adapter = adapter
-        mainImageRecycler.layoutManager = LinearLayoutManager(activity)
     }
 
     override fun showComments() {}
@@ -52,7 +54,9 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
     override fun hideLoadingIndicator() {}
 
 
-    override fun showToast(toast: String) {}
+    override fun showToast(toast: String) {
+        Toast.makeText(activity, toast, Toast.LENGTH_SHORT).show()
+    }
 
 
     companion object {

@@ -1,5 +1,6 @@
 package kr.sofac.itsskin.data.network
 
+import android.util.Log
 import kr.sofac.itsskin.data.model.callback.RequestCallback
 import kr.sofac.itsskin.data.model.Category
 import kr.sofac.itsskin.data.network.dto.DTO
@@ -39,10 +40,13 @@ class RequestManager {
             })
         }
 
+
         fun getProduct(dto : DTO, callback : RequestCallback<Product>){
-            apiService.getProduct(ServerRequest(ServerConfig.GET_PRODUCT, dto)).enqueue(object : Callback<ResponseObject<Product>>{
+            apiService.getProduct(ServerRequest(ServerConfig.GET_PRODUCT, dto))
+                    .enqueue(object : Callback<ResponseObject<Product>>{
                 override fun onFailure(call: Call<ResponseObject<Product>>?, t: Throwable?) {
                     callback.onError(t?.message!!)
+                    Log.e("- getProduct-onFailure ","${t.message!!}")
                 }
 
                 override fun onResponse(call: Call<ResponseObject<Product>>?, response: Response<ResponseObject<Product>>?) {
