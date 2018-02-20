@@ -32,6 +32,7 @@ class GridAdapter(private val products: List<Product>, private val callback : Gr
         holder.itemView.titleFirst.text = products[position*2].metaTitle
         holder.itemView.priceFirst.text = products[position*2].variant?.price
         holder.itemView.constraintFirst.setOnClickListener({ callback.itemClick(position * 2) })
+        holder.itemView.addToCartFirst.setOnClickListener { callback.addToCartClick(position*2) }
         if (position * 2 != products.size - 1) {
             GlideApp.with(holder.itemView)
                     .load(ServerConfig.IMAGE_URL + products[position*2 + 1].image?.filename)
@@ -41,9 +42,11 @@ class GridAdapter(private val products: List<Product>, private val callback : Gr
             holder.itemView.titleSecond.text = products[position * 2 + 1].metaTitle
             holder.itemView.priceSecond.text = products[position * 2 + 1].variant?.price
             holder.itemView.constraintSecond.setOnClickListener { callback.itemClick(position * 2 + 1) }
+            holder.itemView.addToCartSecond.setOnClickListener { callback.addToCartClick(position * 2 + 1) }
         } else {
             holder.itemView.imageSecond.visibility = View.GONE
             holder.itemView.titleSecond.visibility = View.GONE
+            holder.itemView.addToCartSecond.visibility = View.GONE
         }
     }
 

@@ -1,16 +1,22 @@
 package kr.sofac.itsskin.ui.navigation
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.category_recycler.*
 import kr.sofac.itsskin.R
 import kr.sofac.itsskin.data.model.Category
 import kr.sofac.itsskin.data.model.callback.CategoryCallback
 import kr.sofac.itsskin.util.AppPreference
+import android.view.MenuInflater
+import android.view.MenuItem
+import kr.sofac.itsskin.ui.cart.CartActivity
+
 
 class NavigationActivity : AppCompatActivity(){
 
@@ -43,6 +49,21 @@ class NavigationActivity : AppCompatActivity(){
         toggle.syncState()
 
         initDrawerMenu()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_cart, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.cart -> {
+                startActivity(Intent(this, CartActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initDrawerMenu() {

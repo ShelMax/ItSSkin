@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_grid.view.*
 import kr.sofac.itsskin.R
 import kr.sofac.itsskin.data.model.Product
 import kr.sofac.itsskin.data.model.callback.GridCallback
+import kr.sofac.itsskin.util.AppPreference
 import kr.sofac.itsskin.ui.detail.ProductDetailActivity
 import kr.sofac.itsskin.util.Constants
 
@@ -20,14 +21,21 @@ class GridFragment : Fragment(), NavigationGridContract.View {
     private lateinit var presenter: NavigationGridContract.Presenter
     private lateinit var adapter: GridAdapter
     private lateinit var products: MutableList<Product>
+    private lateinit var appPreference: AppPreference
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_grid, container, false)
         products = arrayListOf()
+        appPreference = AppPreference(activity?.applicationContext!!)
         adapter = GridAdapter(products, object : GridCallback {
             override fun itemClick(position: Int) {
-               presenter.onItemClick(products[position].url)
+                startDetailProductActivity(products[position].url)
+            }
+
+            override fun addToCartClick(position: Int) {
+                appPreference.addProductToCart(products[position])
+                Toast.makeText(activity, "Product added to cart", Toast.LENGTH_SHORT).show()
             }
         })
         view.gridRecycler.layoutManager = LinearLayoutManager(activity)

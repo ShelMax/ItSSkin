@@ -28,9 +28,6 @@ class CategoryAdapter(private val categories : List<Category>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(!isTopCategory){
             holder.itemView?.categoryName?.setTextColor(Color.parseColor("#FF6C6B6B"))
-//                val llp = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-//                llp.setMargins(50, 0, 0, 0)
-//                itemView.categoryName.layoutParams = llp
         }
         holder.itemView.categoryName.text = categories[position].metaTitle
         if(categories[position].subcategories != null){
@@ -38,7 +35,7 @@ class CategoryAdapter(private val categories : List<Category>,
             holder.itemView.childCategoryRecycler.layoutManager = LinearLayoutManager(holder.itemView.context)
             holder.itemView.expandCategory.setOnClickListener {
                 holder.isExpanded = !holder.isExpanded
-                notifyItemChanged(position, holder)
+                updateView(holder)
             }
         }
         else{
