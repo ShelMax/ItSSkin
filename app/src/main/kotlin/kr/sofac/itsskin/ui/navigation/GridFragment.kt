@@ -27,7 +27,7 @@ class GridFragment : Fragment(), NavigationGridContract.View {
         products = arrayListOf()
         adapter = GridAdapter(products, object : GridCallback {
             override fun itemClick(position: Int) {
-               presenter.onItemClick(products[position].id)
+               presenter.onItemClick(products[position].url)
             }
         })
         view.gridRecycler.layoutManager = LinearLayoutManager(activity)
@@ -55,9 +55,9 @@ class GridFragment : Fragment(), NavigationGridContract.View {
         presenter.loadCategoryProducts(categoryURL)
     }
 
-    override fun startDetailProductActivity(productId: String?) {
+    override fun startDetailProductActivity(productUrl: String?) {
         val intent = Intent(activity, ProductDetailActivity::class.java)
-        intent.putExtra(Constants.PRODUCT_ID, productId)
+        intent.putExtra(Constants.PRODUCT_URL, productUrl)
         startActivity(intent)
     }
 }

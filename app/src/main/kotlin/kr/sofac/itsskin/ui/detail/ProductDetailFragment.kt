@@ -6,9 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_detail.view.*
+import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskin.R
-import kr.sofac.itsskin.data.model.Image
 import kr.sofac.itsskin.data.model.Product
 
 
@@ -20,6 +19,10 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
     override var isActive: Boolean = false
         get() = isAdded
 
+    override fun onResume() {
+        super.onResume()
+        presenter.start()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
@@ -27,14 +30,18 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         return view
     }
 
+    override fun showProductDescription(product: Product){
 
-    override fun showProduct(product: Product) {
-        val listImage: List<Image> = listOf()
-        val adapterImageScrolling = ImageScrollerAdapter(listImage)
-        view.mainImageRecycler.layoutManager = LinearLayoutManager(activity)
-        view.mainImageRecycler.adapter = adapterImageScrolling
     }
 
+    override fun showSameProductScroller(listProduct: List<Product>){
+
+    }
+
+    override fun showImageScroller(adapter: ImageScrollerAdapter) {
+        mainImageRecycler.adapter = adapter
+        mainImageRecycler.layoutManager = LinearLayoutManager(activity)
+    }
 
     override fun showComments() {}
 

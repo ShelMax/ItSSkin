@@ -14,6 +14,6 @@ interface NavigationGridContract {
     interface Presenter {
         fun loadDefaultProducts()
         fun loadCategoryProducts(categoryURL: String)
-        fun onItemClick(productId: String?)
+        fun onItemClick(productUrl: String?)
     }
 }

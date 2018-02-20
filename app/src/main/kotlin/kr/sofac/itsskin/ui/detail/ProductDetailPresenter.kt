@@ -13,6 +13,10 @@ class ProductDetailPresenter(
         private val productDetailView: ProductDetailContract.View
 ) : ProductDetailContract.Presenter {
 
+    init {
+        productDetailView.presenter = this
+    }
+
     override fun start() {
         openProduct()
     }
@@ -25,11 +29,11 @@ class ProductDetailPresenter(
         productDetailView.showLoadingIndicator()
         RequestManager.getProduct(DTO().setProductURL(""), object : RequestCallback<Product> {
             override fun onSuccess(data: Product) {
-
+                productDetailView.showImageScroller(ImageScrollerAdapter(data.images?: listOf()))
             }
 
             override fun onError(message: String) {
-
+                productDetailView.showToast("Cat'n loading product")
             }
 
         })

@@ -13,7 +13,7 @@ class ProductDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val productId = intent?.getStringExtra(Constants.PRODUCT_ID) ?: "0"
+        val productUrl = intent.getStringExtra(Constants.PRODUCT_URL)
 
         setupActionBar(R.id.toolbar){
             setDisplayHomeAsUpEnabled(true)
@@ -22,8 +22,8 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         val productDetailFragment = supportFragmentManager.findFragmentById(R.id.contentFrame) as ProductDetailFragment?
-                ?: ProductDetailFragment.newInstance(productId).also { replaceFragmentInActivity(it, R.id.contentFrame) }
-        ProductDetailPresenter(productId, productDetailFragment)
+                ?: ProductDetailFragment.newInstance(productUrl).also { replaceFragmentInActivity(it, R.id.contentFrame) }
+        ProductDetailPresenter(productUrl, productDetailFragment)
 
     }
 

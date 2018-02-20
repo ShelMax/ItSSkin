@@ -15,7 +15,9 @@ interface ProductDetailContract {
 
         fun showProductDescription(product: Product)
 
-        fun showImageScroller(listImage: List<Image>)
+        fun showSameProductScroller(listProduct: List<Product>)
+
+        fun showImageScroller(adapter: ImageScrollerAdapter)
 
         fun showToast(toast: String)
 
