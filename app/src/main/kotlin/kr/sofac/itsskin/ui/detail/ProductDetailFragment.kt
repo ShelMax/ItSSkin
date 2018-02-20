@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewParent
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskin.R
@@ -53,6 +54,15 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         imageScrollingRecycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         imageScrollingRecycler.layoutManager.isAutoMeasureEnabled = false
         imageScrollingRecycler.adapter = adapter
+        chevronLeft.setOnClickListener {
+            if (imageScrollingRecycler.verticalScrollbarPosition - 1 >= 0)
+                imageScrollingRecycler.smoothScrollToPosition(imageScrollingRecycler.verticalScrollbarPosition - 1)
+        }
+        chevronRight.setOnClickListener {
+            showToast("${imageScrollingRecycler.verticalScrollbarPosition}")
+            if (imageScrollingRecycler.adapter.itemCount >= imageScrollingRecycler.verticalScrollbarPosition + 1)
+                imageScrollingRecycler.smoothScrollToPosition(imageScrollingRecycler.verticalScrollbarPosition + 1)
+        }
     }
 
     override fun showComments() {}
