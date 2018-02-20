@@ -3,7 +3,6 @@ package kr.sofac.itsskin.ui.detail
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,17 +31,28 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         return view
     }
 
-    override fun fillProductDescription(product: Product){
-
+    override fun fillProductDescription(product: Product) {
+        textTitle.text = product.name
+        textAvailables.text = if ("1".equals(product.visible)) {
+            textAvailables.setTextColor(resources.getColor(R.color.colorGreen))
+            "Есть в наличии"
+        } else {
+            textAvailables.setTextColor(resources.getColor(R.color.colorRed))
+            "Нет в наличии"
+        }
+        textCodeProduct.text = product.variant?.sku
+        textPrice.text = product.variant?.price
+        textRateCircle.text = "OOOOO"
     }
 
-    override fun showSameProductScroller(listProduct: List<Product>){
+    override fun showSameProductScroller(listProduct: List<Product>) {
 
     }
 
     override fun showImageScroller(adapter: ImageScrollerAdapter) {
-        mainImageRecycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, true)
-        mainImageRecycler.adapter = adapter
+        imageScrollingRecycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        imageScrollingRecycler.layoutManager.isAutoMeasureEnabled = false
+        imageScrollingRecycler.adapter = adapter
     }
 
     override fun showComments() {}

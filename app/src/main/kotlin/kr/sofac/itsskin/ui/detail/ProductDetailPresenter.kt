@@ -22,7 +22,7 @@ class ProductDetailPresenter(
         openProduct()
     }
 
-    fun openProduct(){
+    private fun openProduct(){
         if(productUrl.isEmpty()){
             productDetailView.showToast("Not have product for view!")
             return
@@ -31,13 +31,15 @@ class ProductDetailPresenter(
          RequestManager.getProduct(DTO().setProductURL(productUrl), object : RequestCallback<Product> {
             override fun onSuccess(data: Product) {
                 productDetailView.showImageScroller(ImageScrollerAdapter(data.images?: listOf()))
+                productDetailView.fillProductDescription(data)
             }
 
             override fun onError(message: String) {
-
+                productDetailView.showToast("Connection error.")
             }
 
         })
+        productDetailView.hideLoadingIndicator()
     }
 
     override fun addProductToShopCart(){

@@ -4,44 +4,191 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/imageScrollingRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="250dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mainImageRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/chevronLeft"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageScrollingRecycler"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageScrollingRecycler"
+            app:srcCompat="@drawable/chevron_left" />
 
-            <ImageView
-                android:id="@+id/chevronLeft"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:layout_constraintBottom_toBottomOf="@+id/mainImageRecycler"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/mainImageRecycler"
-                app:srcCompat="@drawable/chevron_left" />
+        <ImageView
+            android:id="@+id/chevronRight"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageScrollingRecycler"
+            app:layout_constraintEnd_toEndOf="@+id/imageScrollingRecycler"
+            app:layout_constraintTop_toTopOf="@+id/imageScrollingRecycler"
+            app:srcCompat="@drawable/chevron_right" />
 
-            <ImageView
-                android:id="@+id/chevronRight"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:layout_constraintBottom_toBottomOf="@+id/mainImageRecycler"
-                app:layout_constraintEnd_toEndOf="@+id/mainImageRecycler"
-                app:layout_constraintTop_toTopOf="@+id/mainImageRecycler"
-                app:srcCompat="@drawable/chevron_right" />
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:padding="5dp"
+            android:text="TITLE"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageScrollingRecycler" />
 
-        </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/lineDivider"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+
+        <TextView
+            android:id="@+id/textCodeProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/lineVertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/line"
+            app:layout_constraintTop_toBottomOf="@+id/line"
+            tools:text="Код товара" />
+
+        <TextView
+            android:id="@+id/textAvailables"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/lineVertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/line"
+            app:layout_constraintTop_toBottomOf="@+id/textCodeProduct"
+            tools:text="Есть в наличии" />
+
+        <LinearLayout
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lineDivider"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAvailables" />
+
+        <LinearLayout
+            android:id="@+id/lineVertical"
+            android:layout_width="1px"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lineDivider"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/line2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line" />
+
+        <TextView
+            android:id="@+id/textRateCircle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textCodeProduct"
+            app:layout_constraintEnd_toEndOf="@+id/line"
+            app:layout_constraintStart_toEndOf="@+id/lineVertical" />
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textAvailables"
+            app:layout_constraintEnd_toEndOf="@+id/line"
+            app:layout_constraintStart_toEndOf="@+id/lineVertical" />
+
+
+        <Button
+            android:id="@+id/addToCart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_add_to_cart"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="Додати у кошик"
+            app:layout_constraintEnd_toStartOf="@+id/addToCartFirst2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+        <Button
+            android:id="@+id/addToCartFirst2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_add_to_cart"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="Вiдгуки"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addToCart"
+            app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
 </ScrollView>
 
 

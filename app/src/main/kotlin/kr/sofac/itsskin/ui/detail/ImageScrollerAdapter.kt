@@ -17,6 +17,7 @@ class ImageScrollerAdapter(var listImages: List<Image>) : RecyclerView.Adapter<I
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent?.context).inflate(R.layout.item_image, parent, false)
+        view.layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         return ViewHolder(view)
     }
 
