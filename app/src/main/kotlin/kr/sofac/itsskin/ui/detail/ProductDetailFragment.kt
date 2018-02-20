@@ -10,9 +10,6 @@ import kr.sofac.itsskin.R
 import kr.sofac.itsskin.data.model.Product
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
     override lateinit var presenter: ProductDetailContract.Presenter
@@ -22,7 +19,6 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 

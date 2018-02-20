@@ -9,7 +9,6 @@ import com.google.gson.reflect.TypeToken
 import kr.sofac.itsskin.data.model.CartProduct
 import kr.sofac.itsskin.data.model.Category
 import kr.sofac.itsskin.data.model.Product
-import java.util.ArrayList
 
 class AppPreference (context: Context){
 
@@ -63,10 +62,9 @@ class AppPreference (context: Context){
 
     fun removeProductFromCart(product: Product){
         val products = getCartProducts()
-        products.forEachIndexed { index, cartProduct ->
-            if(cartProduct.product.url == product.url)
-                products.removeAt(index)
-        }
+        products.indices
+                .filter { products[it].product.url == product.url }
+                .forEach { products.removeAt(it) }
         saveCartProducts(products)
     }
 

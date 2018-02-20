@@ -9,10 +9,6 @@ import kr.sofac.itsskin.data.network.RequestManager
 
 class NavigationGridPresenter(val view : NavigationGridContract.View) : NavigationGridContract.Presenter{
 
-    override fun onItemClick(productId: String?) {
-        view.startDetailProductActivity(productId)
-    }
-
     override fun loadDefaultProducts() {
         RequestManager.getCategories(object : RequestCallback<List<Category>> {
             override fun onSuccess(data: List<Category>) {

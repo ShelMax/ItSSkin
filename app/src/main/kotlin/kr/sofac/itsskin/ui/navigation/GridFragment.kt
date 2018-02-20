@@ -30,13 +30,12 @@ class GridFragment : Fragment(), NavigationGridContract.View {
         appPreference = AppPreference(activity?.applicationContext!!)
         adapter = GridAdapter(products, object : GridCallback {
             override fun itemClick(position: Int) {
-
+                startDetailProductActivity(products[position].id)
             }
 
             override fun addToCartClick(position: Int) {
                 appPreference.addProductToCart(products[position])
                 Toast.makeText(activity, "Product added to cart", Toast.LENGTH_SHORT).show()
-               presenter.onItemClick(products[position].id)
             }
         })
         view.gridRecycler.layoutManager = LinearLayoutManager(activity)
