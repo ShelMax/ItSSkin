@@ -1,12 +1,13 @@
 package kr.sofac.itsskin.ui.detail
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskin.R
@@ -28,7 +29,6 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
-
         return view
     }
 
@@ -44,6 +44,20 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         textCodeProduct.text = product.variant?.sku
         textPrice.text = product.variant?.price
         textRateCircle.text = "OOOOO"
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            textDescriptionBody.text = Html.fromHtml(product.body, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            textDescriptionBody.text = Html.fromHtml(product.body)
+        }
+
+        for (feature in product.features!!) {
+            val textView = TextView(activity)
+            val text = "${feature.name}: ${feature.value}"
+            textView.text = text
+            linerLayoutFeatures.addView(textView)
+        }
+
     }
 
     override fun showSameProductScroller(listProduct: List<Product>) {
@@ -51,18 +65,19 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
     }
 
     override fun showImageScroller(adapter: ImageScrollerAdapter) {
-        imageScrollingRecycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        imageScrollingRecycler.layoutManager.isAutoMeasureEnabled = false
-        imageScrollingRecycler.adapter = adapter
-        chevronLeft.setOnClickListener {
-            if (imageScrollingRecycler.verticalScrollbarPosition - 1 >= 0)
-                imageScrollingRecycler.smoothScrollToPosition(imageScrollingRecycler.verticalScrollbarPosition - 1)
-        }
-        chevronRight.setOnClickListener {
-            showToast("${imageScrollingRecycler.verticalScrollbarPosition}")
-            if (imageScrollingRecycler.adapter.itemCount >= imageScrollingRecycler.verticalScrollbarPosition + 1)
-                imageScrollingRecycler.smoothScrollToPosition(imageScrollingRecycler.verticalScrollbarPosition + 1)
-        }
+//        imagePageView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+//        imagePageView.layoutManager.isAutoMeasureEnabled = false
+
+        imagePageView.adapter = adapter
+//        chevronLeft.setOnClickListener {
+//            if (imagePageView.verticalScrollbarPosition - 1 >= 0)
+//                imagePageView.smoothScrollToPosition(imagePageView.verticalScrollbarPosition - 1)
+//        }
+//        chevronRight.setOnClickListener {
+//            showToast("${imagePageView.verticalScrollbarPosition}")
+//            if (imagePageView.adapter.itemCount >= imagePageView.verticalScrollbarPosition + 1)
+//                imagePageView.smoothScrollToPosition(imagePageView.verticalScrollbarPosition + 1) //TODO finish control button image
+//        }
     }
 
     override fun showComments() {}
