@@ -3,6 +3,7 @@ package kr.sofac.itsskin.ui.detail
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +12,15 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskin.R
+import kr.sofac.itsskin.data.model.Image
 import kr.sofac.itsskin.data.model.Product
+import kr.sofac.itsskin.util.AppPreference
 
 
 class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
-
     override lateinit var presenter: ProductDetailContract.Presenter
+    lateinit var appPreference: AppPreference
 
     override var isActive: Boolean = false
         get() = isAdded
@@ -29,26 +32,33 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
+        appPreference = AppPreference(inflater.context)
         return view
     }
 
     override fun fillProductDescription(product: Product) {
         textTitle.text = product.name
-        textAvailables.text = if ("1".equals(product.visible)) {
+        textCodeProduct.text = product.variant?.sku
+        textRateCircle.text = "OOOOO"
+        textPrice.text = product.variant?.price
+
+        textAvailables.text = if ("1" == product.visible) {
             textAvailables.setTextColor(resources.getColor(R.color.colorGreen))
             "Есть в наличии"
         } else {
             textAvailables.setTextColor(resources.getColor(R.color.colorRed))
             "Нет в наличии"
         }
-        textCodeProduct.text = product.variant?.sku
-        textPrice.text = product.variant?.price
-        textRateCircle.text = "OOOOO"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             textDescriptionBody.text = Html.fromHtml(product.body, Html.FROM_HTML_MODE_COMPACT)
         } else {
             textDescriptionBody.text = Html.fromHtml(product.body)
+        }
+
+        addToCart.setOnClickListener {
+            presenter.addProductToShopCart(appPreference)
+            Toast.makeText(activity, "Product added to cart", Toast.LENGTH_SHORT).show()
         }
 
         for (feature in product.features!!) {
@@ -60,33 +70,38 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
     }
 
-    override fun showSameProductScroller(listProduct: List<Product>) {
+    override fun showSimilarProductScroller(listProduct: List<Product>) {
+        similarProductPageView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        similarProductPageView.adapter = ProductScrollingAdapter(listProduct)
+        chevronLeft.setOnClickListener {
 
+        }
+        chevronRight.setOnClickListener {
+
+        }
     }
 
-    override fun showImageScroller(adapter: ImageScrollerAdapter) {
-//        imagePageView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//        imagePageView.layoutManager.isAutoMeasureEnabled = false
 
-        imagePageView.adapter = adapter
-//        chevronLeft.setOnClickListener {
-//            if (imagePageView.verticalScrollbarPosition - 1 >= 0)
-//                imagePageView.smoothScrollToPosition(imagePageView.verticalScrollbarPosition - 1)
-//        }
-//        chevronRight.setOnClickListener {
-//            showToast("${imagePageView.verticalScrollbarPosition}")
-//            if (imagePageView.adapter.itemCount >= imagePageView.verticalScrollbarPosition + 1)
-//                imagePageView.smoothScrollToPosition(imagePageView.verticalScrollbarPosition + 1) //TODO finish control button image
-//        }
+    override fun showImageScroller(images: List<Image>) {
+        imagePageView.adapter = ImageScrollerAdapter(activity, images)
+        chevronLeft.setOnClickListener {
+
+        }
+        chevronRight.setOnClickListener {
+
+        }
+    }
+
+    override fun hideSimilarProductScroller() {
+        similarProductPageView.visibility = View.GONE
+//        productRight.visibility = View.GONE
+//        productLeft.visibility = View.GONE
+        line5.visibility = View.GONE
+        textTitleSimilarProduct.visibility = View.GONE
+        line6.visibility = View.GONE
     }
 
     override fun showComments() {}
-
-
-    override fun showLoadingIndicator() {}
-
-
-    override fun hideLoadingIndicator() {}
 
 
     override fun showToast(toast: String) {

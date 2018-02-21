@@ -1,8 +1,12 @@
 package kr.sofac.itsskin.ui.detail
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import kr.sofac.itsskin.R
+import kr.sofac.itsskin.ui.cart.CartActivity
 import kr.sofac.itsskin.util.Constants
 import kr.sofac.itsskin.util.replaceFragmentInActivity
 import kr.sofac.itsskin.util.setupActionBar
@@ -25,6 +29,21 @@ class ProductDetailActivity : AppCompatActivity() {
                 ?: ProductDetailFragment.newInstance(productUrl).also { replaceFragmentInActivity(it, R.id.contentFrame) }
         ProductDetailPresenter(productUrl, productDetailFragment)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_cart_dark, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.cart -> {
+                startActivity(Intent(this, CartActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

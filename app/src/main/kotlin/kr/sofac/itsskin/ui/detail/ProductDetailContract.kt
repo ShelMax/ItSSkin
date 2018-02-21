@@ -4,6 +4,7 @@ import kr.sofac.itsskin.BasePresenter
 import kr.sofac.itsskin.BaseView
 import kr.sofac.itsskin.data.model.Image
 import kr.sofac.itsskin.data.model.Product
+import kr.sofac.itsskin.util.AppPreference
 
 /**
  * Created by Maxim on 2/14/2018.
@@ -15,23 +16,21 @@ interface ProductDetailContract {
 
         fun fillProductDescription(product: Product)
 
-        fun showSameProductScroller(listProduct: List<Product>)
+        fun showSimilarProductScroller(listProduct: List<Product>)
 
-        fun showImageScroller(adapter: ImageScrollerAdapter)
+        fun hideSimilarProductScroller()
+
+        fun showImageScroller(images: List<Image>)
 
         fun showToast(toast: String)
 
         fun showComments()
 
-        fun showLoadingIndicator()
-
-        fun hideLoadingIndicator()
-
     }
 
     interface Presenter : BasePresenter {
 
-        fun addProductToShopCart()
+        fun addProductToShopCart(appPreference: AppPreference)
 
         fun clickShowReview()
 
