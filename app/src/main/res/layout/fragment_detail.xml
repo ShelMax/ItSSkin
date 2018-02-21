@@ -1,309 +1,316 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.constraint.ConstraintLayout
+    <ScrollView
+        android:id="@+id/scrollViewProduct"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-        <android.support.v4.view.ViewPager
-            android:focusableInTouchMode="true"
-            android:id="@+id/imagePageView"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/imageViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="32dp"
+                android:focusableInTouchMode="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageView
-            android:id="@+id/chevronLeft"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imagePageView"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imagePageView"
-            app:srcCompat="@drawable/chevron_left" />
+            <ImageView
+                android:id="@+id/chevronLeft"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewPager"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageViewPager"
+                app:srcCompat="@drawable/chevron_left" />
 
-        <ImageView
-            android:id="@+id/chevronRight"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imagePageView"
-            app:layout_constraintEnd_toEndOf="@+id/imagePageView"
-            app:layout_constraintTop_toTopOf="@+id/imagePageView"
-            app:srcCompat="@drawable/chevron_right" />
+            <ImageView
+                android:id="@+id/chevronRight"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewPager"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewPager"
+                app:layout_constraintTop_toTopOf="@+id/imageViewPager"
+                app:srcCompat="@drawable/chevron_right" />
 
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:padding="5dp"
-            android:text="TITLE"
-            android:textAlignment="textStart"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagePageView" />
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:text="TITLE"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewPager" />
 
-        <LinearLayout
-            android:id="@+id/line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@color/lineDivider"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/lineDivider"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
-        <TextView
-            android:id="@+id/textCodeProduct"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/lineVertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/line"
-            app:layout_constraintTop_toBottomOf="@+id/line"
-            tools:text="Код товара" />
+            <TextView
+                android:id="@+id/textCodeProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/code_product"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/lineVertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/line"
+                app:layout_constraintTop_toBottomOf="@+id/line"
+                tools:text="Код товара" />
 
-        <TextView
-            android:id="@+id/textAvailables"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="TextView"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/lineVertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/line"
-            app:layout_constraintTop_toBottomOf="@+id/textCodeProduct"
-            tools:text="Есть в наличии" />
+            <TextView
+                android:id="@+id/textAvailables"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/are_available"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/lineVertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/line"
+                app:layout_constraintTop_toBottomOf="@+id/textCodeProduct"
+                tools:text="Есть в наличии" />
 
-        <LinearLayout
-            android:id="@+id/lineVertical"
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/lineDivider"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/line2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line" />
+            <LinearLayout
+                android:id="@+id/lineVertical"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/lineDivider"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/line2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line" />
 
-        <TextView
-            android:id="@+id/textRateCircle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="TextView"
-            android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textCodeProduct"
-            app:layout_constraintEnd_toEndOf="@+id/line"
-            app:layout_constraintStart_toEndOf="@+id/lineVertical" />
+            <TextView
+                android:id="@+id/textRateCircle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/rating"
+                android:textSize="12sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textCodeProduct"
+                app:layout_constraintEnd_toEndOf="@+id/line"
+                app:layout_constraintStart_toEndOf="@+id/lineVertical" />
 
-        <TextView
-            android:id="@+id/textPrice"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="TextView"
-            android:textSize="12sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textAvailables"
-            app:layout_constraintEnd_toEndOf="@+id/line"
-            app:layout_constraintStart_toEndOf="@+id/lineVertical" />
+            <TextView
+                android:id="@+id/textPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/price_value"
+                android:textSize="12sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textAvailables"
+                app:layout_constraintEnd_toEndOf="@+id/line"
+                app:layout_constraintStart_toEndOf="@+id/lineVertical" />
 
-        <LinearLayout
-            android:id="@+id/line2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/lineDivider"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textAvailables" />
-
-
-        <Button
-            android:id="@+id/addToCart"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_add_to_cart"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
-            android:text="Додати у кошик"
-            app:layout_constraintEnd_toStartOf="@+id/buttonShowComments"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line2" />
-
-        <Button
-            android:id="@+id/buttonShowComments"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_add_to_cart"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
-            android:text="Вiдгуки"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/addToCart"
-            app:layout_constraintTop_toBottomOf="@+id/line2" />
-
-        <LinearLayout
-            android:id="@+id/line3"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/lineDivider"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addToCart">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linerLayoutFeatures"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line3" />
-
-        <LinearLayout
-            android:id="@+id/line4"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/lineDivider"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linerLayoutFeatures">
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textDescriptionBody"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line4"
-            tools:text="Description..." />
-
-        <LinearLayout
-            android:id="@+id/line5"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/colorRed"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textDescriptionBody"/>
-
-        <TextView
-            android:id="@+id/textTitleSimilarProduct"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:padding="5dp"
-            android:text="РЕКОМЕНДУЕМ К ПОКУПКЕ"
-            android:textAlignment="textStart"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line5" />
-
-        <LinearLayout
-            android:id="@+id/line6"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@color/lineDivider"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleSimilarProduct" />
+            <LinearLayout
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/lineDivider"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textAvailables" />
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/similarProductPageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line6" />
+            <Button
+                android:id="@+id/addToCart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_add_to_cart"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:text="@string/add_to_cart"
+                app:layout_constraintEnd_toStartOf="@+id/buttonShowComments"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line2" />
 
-        <!--<ImageView-->
+            <Button
+                android:id="@+id/buttonShowComments"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_add_to_cart"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:text="@string/comments"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addToCart"
+                app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+            <LinearLayout
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/lineDivider"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addToCart">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linerLayoutFeatures"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line3" />
+
+            <LinearLayout
+                android:id="@+id/line4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/lineDivider"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linerLayoutFeatures">
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textDescriptionBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line4"
+                tools:text="Description..." />
+
+            <LinearLayout
+                android:id="@+id/line5"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorRed"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textDescriptionBody" />
+
+            <TextView
+                android:id="@+id/textTitleSimilarProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:text="@string/recommendations"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line5" />
+
+            <LinearLayout
+                android:id="@+id/line6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/lineDivider"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitleSimilarProduct" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/similarProductPageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line6" />
+
+            <!--<ImageView-->
             <!--android:id="@+id/productLeft"-->
             <!--android:layout_width="50dp"-->
             <!--android:layout_height="50dp"-->
@@ -314,7 +321,7 @@
             <!--app:layout_constraintTop_toTopOf="@+id/similarProductPageView"-->
             <!--app:srcCompat="@drawable/chevron_left" />-->
 
-        <!--<ImageView-->
+            <!--<ImageView-->
             <!--android:id="@+id/productRight"-->
             <!--android:layout_width="50dp"-->
             <!--android:layout_height="50dp"-->
@@ -324,9 +331,29 @@
             <!--app:layout_constraintTop_toTopOf="@+id/similarProductPageView"-->
             <!--app:srcCompat="@drawable/chevron_right" />-->
 
-    </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
 
-</ScrollView>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/progressBarLoadingProduct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/colorWhite"
+        android:theme="@style/AppTheme.WhiteAccent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
 
 
 

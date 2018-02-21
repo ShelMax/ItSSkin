@@ -7,7 +7,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_products">Order products</string>
+    <string name="code_product">Code product: 0000</string>
+    <string name="are_available">Are available</string>
+    <string name="rating">Rating</string>
+    <string name="price_value">500 UAH</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="comments">Comments</string>
+    <string name="recommendations">RECOMMENDATIONS</string>
+    <string name="title">Title</string>
+    <string name="user_name">User Name</string>
+    <string name="cart">Cart</string>
 </resources>

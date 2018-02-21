@@ -7,7 +7,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
-        applicationId "kr.sofac.itsskin"
+        applicationId "kr.sofac.itsskinapp"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
