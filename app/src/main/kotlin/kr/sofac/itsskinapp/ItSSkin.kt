@@ -2,9 +2,7 @@ package kr.sofac.itsskinapp
 
 import android.app.Application
 
-/**
- * Created by Maxim on 2/13/2018.
- */
-class ItSSkin : Application() {
+class ItSSkin : Application()
 
-}
+//TODO немного сжать картинки
+//TODO обновлять количество продуктов в корзине при onStop

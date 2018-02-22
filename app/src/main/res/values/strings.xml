@@ -10,12 +10,12 @@
     <string name="order_products">Order products</string>
     <string name="code_product">Code product: 0000</string>
     <string name="are_available">Are available</string>
-    <string name="rating">Rating</string>
+    <string name="rating">Рейтинг</string>
     <string name="price_value">500 UAH</string>
-    <string name="add_to_cart">Add to cart</string>
-    <string name="comments">Comments</string>
+    <string name="add_to_cart">У кошик</string>
+    <string name="comments">Коментарі</string>
     <string name="recommendations">RECOMMENDATIONS</string>
     <string name="title">Title</string>
     <string name="user_name">User Name</string>
-    <string name="cart">Cart</string>
+    <string name="cart">Кошик</string>
 </resources>

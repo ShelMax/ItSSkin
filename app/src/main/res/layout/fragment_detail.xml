@@ -28,24 +28,24 @@
 
 
             <ImageView
-                android:id="@+id/chevronLeft"
+                android:id="@+id/arrowLeft"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewPager"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewPager"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageViewPager"
+                app:layout_constraintTop_toTopOf="@id/imageViewPager"
                 app:srcCompat="@drawable/chevron_left" />
 
             <ImageView
-                android:id="@+id/chevronRight"
+                android:id="@+id/arrowRight"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewPager"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewPager"
-                app:layout_constraintTop_toTopOf="@+id/imageViewPager"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewPager"
+                app:layout_constraintEnd_toEndOf="@id/imageViewPager"
+                app:layout_constraintTop_toTopOf="@id/imageViewPager"
                 app:srcCompat="@drawable/chevron_right" />
 
             <TextView
@@ -64,20 +64,19 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewPager" />
+                app:layout_constraintTop_toBottomOf="@id/imageViewPager" />
 
-            <LinearLayout
+            <View
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:background="@color/lineDivider"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+                app:layout_constraintTop_toBottomOf="@id/textTitle" />
 
             <TextView
                 android:id="@+id/textCodeProduct"
@@ -88,14 +87,14 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/code_product"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@+id/lineVertical"
+                app:layout_constraintEnd_toStartOf="@id/lineVertical"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/line"
-                app:layout_constraintTop_toBottomOf="@+id/line"
+                app:layout_constraintStart_toStartOf="@id/line"
+                app:layout_constraintTop_toBottomOf="@id/line"
                 tools:text="Код товара" />
 
             <TextView
-                android:id="@+id/textAvailables"
+                android:id="@+id/textAvailable"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -103,27 +102,26 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/are_available"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@+id/lineVertical"
+                app:layout_constraintEnd_toStartOf="@id/lineVertical"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/line"
-                app:layout_constraintTop_toBottomOf="@+id/textCodeProduct"
+                app:layout_constraintStart_toStartOf="@id/line"
+                app:layout_constraintTop_toBottomOf="@id/textCodeProduct"
                 tools:text="Есть в наличии" />
 
-            <LinearLayout
+            <View
                 android:id="@+id/lineVertical"
                 android:layout_width="1dp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/lineDivider"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/line2"
+                app:layout_constraintBottom_toTopOf="@id/line2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line" />
+                app:layout_constraintTop_toBottomOf="@id/line" />
 
             <TextView
                 android:id="@+id/textRateCircle"
@@ -133,9 +131,9 @@
                 android:layout_marginStart="8dp"
                 android:text="@string/rating"
                 android:textSize="12sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textCodeProduct"
-                app:layout_constraintEnd_toEndOf="@+id/line"
-                app:layout_constraintStart_toEndOf="@+id/lineVertical" />
+                app:layout_constraintBaseline_toBaselineOf="@id/textCodeProduct"
+                app:layout_constraintEnd_toEndOf="@id/line"
+                app:layout_constraintStart_toEndOf="@id/lineVertical" />
 
             <TextView
                 android:id="@+id/textPrice"
@@ -145,24 +143,23 @@
                 android:layout_marginStart="8dp"
                 android:text="@string/price_value"
                 android:textSize="12sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textAvailables"
-                app:layout_constraintEnd_toEndOf="@+id/line"
-                app:layout_constraintStart_toEndOf="@+id/lineVertical" />
+                app:layout_constraintBaseline_toBaselineOf="@id/textAvailable"
+                app:layout_constraintEnd_toEndOf="@id/line"
+                app:layout_constraintStart_toEndOf="@id/lineVertical" />
 
-            <LinearLayout
+            <View
                 android:id="@+id/line2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/lineDivider"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textAvailables" />
+                app:layout_constraintTop_toBottomOf="@id/textAvailable" />
 
 
             <Button
@@ -196,22 +193,19 @@
                 app:layout_constraintStart_toEndOf="@+id/addToCart"
                 app:layout_constraintTop_toBottomOf="@+id/line2" />
 
-            <LinearLayout
+            <View
                 android:id="@+id/line3"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/lineDivider"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addToCart">
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/addToCart" />
 
             <LinearLayout
                 android:id="@+id/linerLayoutFeatures"
@@ -228,22 +222,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line3" />
 
-            <LinearLayout
+            <View
                 android:id="@+id/line4"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/lineDivider"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linerLayoutFeatures">
+                app:layout_constraintTop_toBottomOf="@+id/linerLayoutFeatures" />
 
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/textDescriptionBody"
@@ -257,18 +249,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/line4"
                 tools:text="Description..." />
 
-            <LinearLayout
+            <View
                 android:id="@+id/line5"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="3dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorRed"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textDescriptionBody" />
+                app:layout_constraintTop_toBottomOf="@id/textDescriptionBody" />
 
             <TextView
                 android:id="@+id/textTitleSimilarProduct"
@@ -288,9 +279,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line5" />
 
-            <LinearLayout
+            <View
                 android:id="@+id/line6"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -299,7 +290,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleSimilarProduct" />
+                app:layout_constraintTop_toBottomOf="@id/textTitleSimilarProduct" />
 
 
             <android.support.v7.widget.RecyclerView
@@ -308,7 +299,7 @@
                 android:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line6" />
+                app:layout_constraintTop_toBottomOf="@id/line6" />
 
             <!--<ImageView-->
             <!--android:id="@+id/productLeft"-->
@@ -340,7 +331,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/colorWhite"
+        android:background="@android:color/white"
         android:theme="@style/AppTheme.WhiteAccent">
 
         <ProgressBar

@@ -2,16 +2,12 @@
 <resources>
     <color name="colorPrimary">#3e3b3b</color>
     <color name="colorPrimaryDark">#211f1f</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">@android:color/white</color>
 
     <color name="innerCategory">#FF6C6B6B</color>
-    <color name="colorWhite">#ffffff</color>
     <color name="colorTransparent">#00000000</color>
-    <color name="black_alpha_40">#66000000</color>
 
     <color name="lineDivider">#eaeaea</color>
     <color name="colorGreen">#18750d</color>
     <color name="colorRed">#d75b57</color>
-
-    <!--<color name="colorBackButton">#66ff4e4e</color>-->
 </resources>

@@ -10,19 +10,15 @@ import kr.sofac.itsskinapp.data.model.GlideApp
 import kr.sofac.itsskinapp.data.model.Product
 import kr.sofac.itsskinapp.data.network.ServerConfig
 
-/**
- * Created by Maxim on 2/20/2018.
- */
-class ScrollingProductAdapter(val listProducts: List<Product>) : RecyclerView.Adapter<ScrollingProductAdapter.ViewHolder>() {
+class ScrollingProductAdapter(private val listProducts: List<Product>) : RecyclerView.Adapter<ScrollingProductAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent?.context).inflate(R.layout.item_product_image_title_price, parent, false)
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return listProducts.size
-    }
+    override fun getItemCount() = listProducts.size
+
 
     override fun onBindViewHolder(holder: ScrollingProductAdapter.ViewHolder, position: Int) {
         holder.itemView.textTitleProduct.text = listProducts[position].name

@@ -3,6 +3,7 @@ package kr.sofac.itsskinapp.ui.cart
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_cart.*
 import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.model.CartProduct
@@ -10,8 +11,6 @@ import kr.sofac.itsskinapp.data.model.callback.CartCallback
 import kr.sofac.itsskinapp.util.AppPreference
 
 class CartActivity : AppCompatActivity() {
-
-    //TODO при изменении количества продуктов в корзине заносить новое количество в префы
 
     private lateinit var products : MutableList<CartProduct>
     private lateinit var appPreference: AppPreference
@@ -27,9 +26,20 @@ class CartActivity : AppCompatActivity() {
                 appPreference.removeProductFromCart(products[position].product)
                 products.removeAt(position)
             }
+
+            override fun amountChanged() {
+                updateTotalPrice()
+            }
         })
         cartRecycler.layoutManager = LinearLayoutManager(this)
+        updateTotalPrice()
+    }
 
+    private fun updateTotalPrice() {
+        var totalPrice = 0.0
+        products.forEach {
+            totalPrice += it.product.variant?.price!!.toDouble() * it.amount }
+        productsSum.text = totalPrice.toString()
     }
 
     private fun initToolbar() {
@@ -39,5 +49,10 @@ class CartActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+    }
+
+    override fun onStop() {
+        appPreference.saveCartProducts(products)
+        super.onStop()
     }
 }

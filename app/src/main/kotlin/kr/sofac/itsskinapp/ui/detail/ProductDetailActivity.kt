@@ -24,16 +24,11 @@ class ProductDetailActivity : AppCompatActivity() {
             setDisplayShowHomeEnabled(true)
             setDisplayShowTitleEnabled(false)
         }
-
-        val productDetailFragment = supportFragmentManager.findFragmentById(R.id.contentFrame) as ProductDetailFragment?
-                ?: ProductDetailFragment.newInstance(productUrl).also { replaceFragmentInActivity(it, R.id.contentFrame) }
-        ProductDetailPresenter(productUrl, productDetailFragment)
-
+        supportFragmentManager.beginTransaction().add(R.id.contentFrame, ProductDetailFragment.newInstance(productUrl)).commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu_cart_dark, menu)
+        menuInflater.inflate(R.menu.menu_cart_dark, menu)
         return true
     }
 
@@ -50,6 +45,5 @@ class ProductDetailActivity : AppCompatActivity() {
         onBackPressed()
         return true
     }
-
 
 }

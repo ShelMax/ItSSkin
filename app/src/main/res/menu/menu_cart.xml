@@ -9,5 +9,4 @@
         android:icon="@drawable/cart"
         app:showAsAction="always"/>
 
-
 </menu>

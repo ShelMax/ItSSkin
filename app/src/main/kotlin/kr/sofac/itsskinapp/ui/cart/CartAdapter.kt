@@ -20,9 +20,8 @@ class CartAdapter(private var products : MutableList<CartProduct>, private var c
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return products.size
-    }
+    override fun getItemCount() = products.size
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         GlideApp.with(holder.itemView)
@@ -30,24 +29,24 @@ class CartAdapter(private var products : MutableList<CartProduct>, private var c
                 .into(holder.itemView.productImage)
         holder.itemView.productTitle.text = products[position].product.metaTitle
         holder.itemView.productAmount.text = products[position].amount.toString()
-        holder.itemView.productPrice.text = products[position].product.variant?.price
-        holder.itemView.amountIncrease.setOnClickListener {
+        holder.itemView.productPrice.text = (products[position].product.variant?.price + " ГРН")
+        holder.itemView.amountAdd.setOnClickListener {
             products[position].amount++
             holder.itemView.productAmount.text = products[position].amount.toString()
+            callback.amountChanged()
         }
-        holder.itemView.amountDecrease.setOnClickListener {
+        holder.itemView.amountSubtract.setOnClickListener {
             if(products[position].amount != 1) {
                 products[position].amount--
                 holder.itemView.productAmount.text = products[position].amount.toString()
             }
-        }
-        holder.itemView.removeProduct.setOnClickListener {
-            callback.removeProduct(position)
-            notifyDataSetChanged()
+            else{
+                callback.removeProduct(position)
+                notifyDataSetChanged()
+            }
+            callback.amountChanged()
         }
     }
 
-    class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
-
-    }
+    class ViewHolder(view : View) : RecyclerView.ViewHolder(view)
 }

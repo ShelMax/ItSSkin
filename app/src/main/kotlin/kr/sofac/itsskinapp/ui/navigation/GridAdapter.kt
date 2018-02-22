@@ -11,11 +11,7 @@ import kotlinx.android.synthetic.main.item_grid.view.*
 import kr.sofac.itsskinapp.data.model.GlideApp
 import kr.sofac.itsskinapp.data.model.callback.GridCallback
 
-//TODO Progress dialog everywhere
-
-
 class GridAdapter(private val products: List<Product>, private val callback : GridCallback) : RecyclerView.Adapter<GridAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent?.context).inflate(R.layout.item_grid, parent, false)
@@ -49,9 +45,8 @@ class GridAdapter(private val products: List<Product>, private val callback : Gr
         }
     }
 
-    override fun getItemCount(): Int {
-        return Math.round(products.size.toDouble() / 2).toInt()
-    }
+    override fun getItemCount() = Math.round(products.size.toDouble() / 2).toInt()
+
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view)
 }

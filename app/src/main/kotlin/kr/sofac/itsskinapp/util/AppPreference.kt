@@ -12,18 +12,14 @@ import kr.sofac.itsskinapp.data.model.Product
 
 class AppPreference (context: Context){
 
-    private var preferences: SharedPreferences
+    private var preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
     private val gson : Gson = Gson()
 
     private val CATEGORIES_KEY : String = "Categories"
     private val CART_KEY : String = "Cart"
 
-    init {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context)
-    }
-
     fun getCategories() : List<Category>{
-        return gson.fromJson(preferences.getString(CATEGORIES_KEY,""), object: TypeToken<List<Category>>() {}.type)
+        return gson.fromJson(preferences.getString(CATEGORIES_KEY,"[]"), object: TypeToken<List<Category>>() {}.type)
     }
 
     fun setCategories(categories : List<Category>){
@@ -36,7 +32,7 @@ class AppPreference (context: Context){
         return gson.fromJson(preferences.getString(CART_KEY, "[]"), object : TypeToken<MutableList<CartProduct>>() {}.type)
     }
 
-    private fun saveCartProducts(products : MutableList<CartProduct>?){
+    fun saveCartProducts(products : MutableList<CartProduct>?){
         preferences.edit {
             putString(CART_KEY, gson.toJson(products))
         }
@@ -51,7 +47,7 @@ class AppPreference (context: Context){
         }
         for (cartProduct in products){
             if (cartProduct.product.url == product.url){
-                cartProduct.amount++;
+                cartProduct.amount++
                 saveCartProducts(products)
                 return
             }
