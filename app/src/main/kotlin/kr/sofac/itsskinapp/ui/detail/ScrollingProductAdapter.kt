@@ -10,7 +10,11 @@ import kr.sofac.itsskinapp.data.model.GlideApp
 import kr.sofac.itsskinapp.data.model.Product
 import kr.sofac.itsskinapp.data.network.ServerConfig
 
-class ScrollingProductAdapter(private val listProducts: List<Product>) : RecyclerView.Adapter<ScrollingProductAdapter.ViewHolder>() {
+class ScrollingProductAdapter(private val listProducts: List<Product>, private val onItemClickListener : OnItemClickListener) : RecyclerView.Adapter<ScrollingProductAdapter.ViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onMyClick(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent?.context).inflate(R.layout.item_product_image_title_price, parent, false)
@@ -19,7 +23,6 @@ class ScrollingProductAdapter(private val listProducts: List<Product>) : Recycle
 
     override fun getItemCount() = listProducts.size
 
-
     override fun onBindViewHolder(holder: ScrollingProductAdapter.ViewHolder, position: Int) {
         holder.itemView.textTitleProduct.text = listProducts[position].name
         holder.itemView.textPriceProduct.text = listProducts[position].variant?.price
@@ -27,7 +30,7 @@ class ScrollingProductAdapter(private val listProducts: List<Product>) : Recycle
                 .load(ServerConfig.IMAGE_URL + listProducts[position].image!!.filename)
                 .override(600, 600)
                 .into(holder.itemView.imageSimilarProduct)
-        //TODO Callback
+        holder.itemView.setOnClickListener { onItemClickListener.onMyClick(position) }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)

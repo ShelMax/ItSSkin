@@ -1,5 +1,6 @@
 package kr.sofac.itsskinapp.ui.detail
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskinapp.R
+import kr.sofac.itsskinapp.data.model.Image
 import kr.sofac.itsskinapp.data.model.Product
 import kr.sofac.itsskinapp.util.AppPreference
 import kr.sofac.itsskinapp.util.Constants
@@ -19,30 +21,30 @@ import kr.sofac.itsskinapp.util.Constants
 
 class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
-    private lateinit var presenter: ProductDetailContract.Presenter
     private lateinit var appPreference: AppPreference
-    private lateinit var product: Product
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override lateinit var presenter: ProductDetailContract.Presenter
+
+    override var isActive: Boolean = false
+        get() = isAdded
+
+    override fun onResume() {
+        super.onResume()
+        presenter.start()
+    }
+
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?): View? {
+
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
-        appPreference = AppPreference(activity!!.applicationContext)
-        presenter = ProductDetailPresenter(this)
-        presenter.loadProduct(arguments!!.getString(Constants.PRODUCT_URL, ""))
+        appPreference = AppPreference(view.context)
         return view
     }
 
-    override fun onProductLoaded(product: Product) {
-        this.product = product
-        showImageScroller()
-        fillProductDescription()
-        if (product.relatedProducts == null || product.relatedProducts!!.isEmpty())
-            hideSimilarProductScroller()
-        else
-            showSimilarProductScroller(product.relatedProducts ?: listOf())
-        setLoading(false)
-    }
+    override fun fillProductDescription(product: Product) {
 
-    private fun fillProductDescription() {
         textTitle.text = product.name
         textCodeProduct.text = product.variant?.sku
         textRateCircle.text = "OOOOO"
@@ -67,6 +69,7 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
             Toast.makeText(activity, "Додано у кошик", Toast.LENGTH_SHORT).show()
         }
 
+        linerLayoutFeatures.removeAllViewsInLayout()
         for (feature in product.features!!) {
             val textView = TextView(activity)
             val text = "${feature.name}: ${feature.value}"
@@ -76,9 +79,8 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
     }
 
-
-    private fun showImageScroller() {
-        imageViewPager.adapter = ImageScrollerAdapter(activity, product.images ?: listOf())
+    override fun showImageViewPager(images: List<Image>) {
+        imageViewPager.adapter = ImageScrollerAdapter(activity, images)
 
         arrowLeft.setOnClickListener {
             imageViewPager.setCurrentItem(imageViewPager.currentItem - 1, true)
@@ -88,36 +90,46 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         }
     }
 
-
-    private fun showSimilarProductScroller(listProduct: List<Product>) {
+    override fun showSimilarProductScroller(listProduct: List<Product>) {
         similarProductPageView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        similarProductPageView.adapter = ScrollingProductAdapter(listProduct)
+        similarProductPageView.adapter = ScrollingProductAdapter(listProduct, object : ScrollingProductAdapter.OnItemClickListener {
+            override fun onMyClick(position: Int) {
+                startActivity(Intent(activity, ProductDetailActivity::class.java).putExtra(Constants.PRODUCT_URL, listProduct[position].url))
+            }
+        })
     }
 
-    private fun hideSimilarProductScroller() {
+    override fun hideSimilarProductScroller() {
         similarProductPageView.visibility = View.GONE
-//        productRight.visibility = View.GONE
-//        productLeft.visibility = View.GONE
         line5.visibility = View.GONE
         textTitleSimilarProduct.visibility = View.GONE
         line6.visibility = View.GONE
     }
 
-    override fun showComments() {}
-
-    override fun setLoading(isLoading: Boolean) {
-        if (!isLoading){
-            progressBarLoadingProduct.visibility = View.GONE
-            scrollViewProduct.visibility = View.VISIBLE
-        }
+    override fun showCommentsView() {
+        showToastMessage("Open comments!")
     }
 
-    override fun onLoadError(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    override fun showLoadingProgressBar() {
+        progressBarLoadingProduct.visibility = View.VISIBLE
+        scrollViewProduct.visibility = View.GONE
     }
 
+    override fun hideLoadingProgressBar() {
+        progressBarLoadingProduct.visibility = View.GONE
+        scrollViewProduct.visibility = View.VISIBLE
+    }
+
+    override fun showToastMessage(toastMessage: String) {
+        Toast.makeText(activity, toastMessage, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showMessageInSnackBar() {
+
+    }
+
+    ////////////// TODO Need learn this moment
     companion object {
-
         fun newInstance(productURL: String?) =
                 ProductDetailFragment().apply {
                     arguments = Bundle().apply { putString(Constants.PRODUCT_URL, productURL) }

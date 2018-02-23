@@ -20,6 +20,7 @@ class RequestManager {
             apiService.getCategories(ServerRequest(ServerConfig.GET_CATEGORIES, "")).enqueue(object : Callback<ResponseObject<List<Category>>>{
                 override fun onFailure(call: Call<ResponseObject<List<Category>>>?, t: Throwable?) {
                     callback.onError(t?.message!!)
+                    Log.e("- getProduct-onFailure ", t.message!!)
                 }
 
                 override fun onResponse(call: Call<ResponseObject<List<Category>>>?, response: Response<ResponseObject<List<Category>>>?) {
@@ -32,6 +33,7 @@ class RequestManager {
             apiService.getCategoryProducts(ServerRequest(ServerConfig.GET_CATEGORY_PRODUCTS, dto)).enqueue(object : Callback<ResponseObject<List<Product>>>{
                 override fun onFailure(call: Call<ResponseObject<List<Product>>>?, t: Throwable?) {
                     callback.onError(t?.message!!)
+                    Log.e("- getProduct-onFailure ", t.message!!)
                 }
 
                 override fun onResponse(call: Call<ResponseObject<List<Product>>>?, response: Response<ResponseObject<List<Product>>>?) {
@@ -46,7 +48,7 @@ class RequestManager {
                     .enqueue(object : Callback<ResponseObject<Product>>{
                 override fun onFailure(call: Call<ResponseObject<Product>>?, t: Throwable?) {
                     callback.onError(t?.message!!)
-                    Log.e("- getProduct-onFailure ","${t.message!!}")
+                    Log.e("- getProduct-onFailure ", t.message!!)
                 }
 
                 override fun onResponse(call: Call<ResponseObject<Product>>?, response: Response<ResponseObject<Product>>?) {

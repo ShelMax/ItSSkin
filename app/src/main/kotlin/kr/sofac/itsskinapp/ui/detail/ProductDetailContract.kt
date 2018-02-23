@@ -1,23 +1,45 @@
 package kr.sofac.itsskinapp.ui.detail
 
-import kr.sofac.itsskinapp.data.model.Image
+import kr.sofac.itsskinapp.BasePresenter
 import kr.sofac.itsskinapp.data.model.Product
-import kr.sofac.itsskinapp.ui.base.BaseView
-import kr.sofac.itsskinapp.util.AppPreference
+import kr.sofac.itsskinapp.BaseView
+import kr.sofac.itsskinapp.data.model.Image
 
 interface ProductDetailContract {
 
-    interface View : BaseView{
+    interface View : BaseView<Presenter> {
 
-        fun onProductLoaded(product: Product)
+        var isActive: Boolean
 
-        fun showComments()
+        fun showImageViewPager(images: List<Image>)
+
+        fun fillProductDescription(product: Product)
+
+        fun showSimilarProductScroller(listProduct: List<Product>)
+
+        fun hideSimilarProductScroller()
+
+        fun showCommentsView()
+
+        fun showToastMessage(toastMessage: String)
+
+        fun showMessageInSnackBar()
+
+        fun showLoadingProgressBar()
+
+        fun hideLoadingProgressBar()
+
+
 
     }
 
-    interface Presenter {
+    interface Presenter : BasePresenter {
 
-        fun loadProduct(productUrl : String)
+        fun openProduct()
+
+        fun performAddToCart()
+
+        fun performOpenComment()
 
     }
 

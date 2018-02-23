@@ -17,6 +17,8 @@ class ProductDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        //TODO Add opening product after click on similar product
+
         val productUrl = intent.getStringExtra(Constants.PRODUCT_URL)
 
         setupActionBar(R.id.toolbar){
@@ -24,7 +26,12 @@ class ProductDetailActivity : AppCompatActivity() {
             setDisplayShowHomeEnabled(true)
             setDisplayShowTitleEnabled(false)
         }
-        supportFragmentManager.beginTransaction().add(R.id.contentFrame, ProductDetailFragment.newInstance(productUrl)).commit()
+        val productDetailFragment = supportFragmentManager.findFragmentById(R.id.contentFrame) as ProductDetailFragment?
+                ?: ProductDetailFragment.newInstance(productUrl).also {
+                    replaceFragmentInActivity(it, R.id.contentFrame)
+                }
+        // Create the presenter
+        ProductDetailPresenter(productUrl, productDetailFragment)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
