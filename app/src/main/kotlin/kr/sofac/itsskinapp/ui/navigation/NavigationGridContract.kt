@@ -7,8 +7,7 @@ interface NavigationGridContract {
     interface View {
         fun onProductsLoaded(products: MutableList<Product>)
         fun onLoadError(message: String)
-        fun onShowToast(message: String)
-        fun startDetailProductActivity(productId: String?)
+        fun startDetailProductActivity(productURL: String?)
     }
 
     interface Presenter {

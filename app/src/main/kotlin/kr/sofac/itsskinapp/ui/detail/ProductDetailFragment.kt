@@ -3,6 +3,7 @@ package kr.sofac.itsskinapp.ui.detail
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
@@ -17,7 +18,6 @@ import kr.sofac.itsskinapp.data.model.Image
 import kr.sofac.itsskinapp.data.model.Product
 import kr.sofac.itsskinapp.util.AppPreference
 import kr.sofac.itsskinapp.util.Constants
-
 
 class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
@@ -66,7 +66,7 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
         addToCart.setOnClickListener {
             appPreference.addProductToCart(product)
-            Toast.makeText(activity, "Додано у кошик", Toast.LENGTH_SHORT).show()
+            Snackbar.make(addToCart, "Додано у кошик", Snackbar.LENGTH_LONG).show()
         }
 
         linerLayoutFeatures.removeAllViewsInLayout()

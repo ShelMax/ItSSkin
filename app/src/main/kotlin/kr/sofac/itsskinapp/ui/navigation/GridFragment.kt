@@ -1,7 +1,9 @@
 package kr.sofac.itsskinapp.ui.navigation
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -35,7 +37,7 @@ class GridFragment : Fragment(), NavigationGridContract.View {
 
             override fun addToCartClick(position: Int) {
                 appPreference.addProductToCart(products[position])
-                Toast.makeText(activity, "Product added to cart", Toast.LENGTH_SHORT).show()
+                Snackbar.make(view, "Додано у кошик", Toast.LENGTH_SHORT).show()
             }
         })
         view.gridRecycler.layoutManager = LinearLayoutManager(activity)
@@ -52,20 +54,19 @@ class GridFragment : Fragment(), NavigationGridContract.View {
     }
 
     override fun onLoadError(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onShowToast(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+        val snackBar = Snackbar.make(view!!, "В категорії нема товарів або сталася помилка", Toast.LENGTH_SHORT)
+        val snackBarView = snackBar.view
+        snackBarView.setBackgroundColor(Color.parseColor("#ffff0000"))
+        snackBar.show()
     }
 
     fun loadCategoryProducts(categoryURL : String){
         presenter.loadCategoryProducts(categoryURL)
     }
 
-    override fun startDetailProductActivity(productUrl: String?) {
+    override fun startDetailProductActivity(productURL: String?) {
         val intent = Intent(activity, ProductDetailActivity::class.java)
-        intent.putExtra(Constants.PRODUCT_URL, productUrl)
+        intent.putExtra(Constants.PRODUCT_URL, productURL)
         startActivity(intent)
     }
 }

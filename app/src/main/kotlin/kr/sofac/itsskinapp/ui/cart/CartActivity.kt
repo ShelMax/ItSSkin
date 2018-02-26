@@ -1,13 +1,15 @@
 package kr.sofac.itsskinapp.ui.cart
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
+import android.view.View
 import kotlinx.android.synthetic.main.activity_cart.*
 import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.model.CartProduct
 import kr.sofac.itsskinapp.data.model.callback.CartCallback
+import kr.sofac.itsskinapp.ui.navigation.NavigationActivity
 import kr.sofac.itsskinapp.util.AppPreference
 
 class CartActivity : AppCompatActivity() {
@@ -21,10 +23,23 @@ class CartActivity : AppCompatActivity() {
         initToolbar()
         appPreference = AppPreference(this)
         products = appPreference.getCartProducts()
+        if(products.isEmpty()){
+            initEmptyCart()
+        }
+        else{
+            initCart()
+        }
+
+    }
+
+    private fun initCart() {
+        emptyCartConstraint.visibility = View.GONE
         cartRecycler.adapter = CartAdapter(products, object : CartCallback {
             override fun removeProduct(position: Int) {
                 appPreference.removeProductFromCart(products[position].product)
                 products.removeAt(position)
+                if(products.isEmpty())
+                    initEmptyCart()
             }
 
             override fun amountChanged() {
@@ -33,6 +48,15 @@ class CartActivity : AppCompatActivity() {
         })
         cartRecycler.layoutManager = LinearLayoutManager(this)
         updateTotalPrice()
+    }
+
+    private fun initEmptyCart() {
+        cartConstraint.visibility = View.GONE
+        emptyCartConstraint.visibility = View.VISIBLE
+        backToShop.setOnClickListener {
+            startActivity(Intent(this, NavigationActivity::class.java))
+            finishAffinity()
+        }
     }
 
     private fun updateTotalPrice() {

@@ -37,7 +37,10 @@ class RequestManager {
                 }
 
                 override fun onResponse(call: Call<ResponseObject<List<Product>>>?, response: Response<ResponseObject<List<Product>>>?) {
-                    callback.onSuccess(response?.body()?.dataTransferObject!!)
+                    if(response!!.isSuccessful)
+                        callback.onSuccess(response.body()?.dataTransferObject!!)
+                    else
+                        callback.onError("Виникла помилка")
                 }
             })
         }
@@ -52,7 +55,13 @@ class RequestManager {
                 }
 
                 override fun onResponse(call: Call<ResponseObject<Product>>?, response: Response<ResponseObject<Product>>?) {
-                    callback.onSuccess(response?.body()?.dataTransferObject!!)
+                    if(response!!.isSuccessful){
+                        callback.onSuccess(response.body()?.dataTransferObject!!)
+                    }
+                    else{
+
+                    }
+
                 }
             })
         }
