@@ -7,11 +7,14 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.mancj.slideup.SlideUp
+import com.mancj.slideup.SlideUpBuilder
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.model.Image
@@ -67,6 +70,28 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         addToCart.setOnClickListener {
             appPreference.addProductToCart(product)
             Snackbar.make(addToCart, "Додано у кошик", Snackbar.LENGTH_LONG).show()
+        }
+
+        buttonShowComments.setOnClickListener{
+            showToastMessage("Hello its SlideUp")
+            val textViewSec = TextView(activity)
+            textViewSec.text = "Comments"
+//            val slideUp = SlideUpBuilder(progressBarLoadingProduct)
+//                    .withStartState(SlideUp.State.HIDDEN)
+//                    .withStartGravity(Gravity.BOTTOM)
+//                    .withListeners(object : SlideUp.Listener.Events {
+//                        override fun onSlide(percent: Float) {
+//                            slideUp.setAlpha(1 - percent / 100)
+//                        }
+//
+//                        override fun onVisibilityChanged(visibility: Int) {
+//                            if (visibility == View.GONE) {
+//
+//                            }
+//                        }
+//                    })
+//                    .withGesturesEnabled(true)
+//                    .build()
         }
 
         linerLayoutFeatures.removeAllViewsInLayout()
