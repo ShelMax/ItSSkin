@@ -10,6 +10,16 @@ class DTO {
     @SerializedName("product_url")
     private lateinit var productURL : String
 
+    @SerializedName("shopping_cart")
+    private lateinit var shoppingCart : Map<String, Int>
+
+    @SerializedName("coupon_code")
+    private lateinit var couponCode : String
+
+
+
+
+
     fun setCategoryURL(categoryURL : String) : DTO {
         this.categoryURL = categoryURL
         return this
@@ -17,6 +27,12 @@ class DTO {
 
     fun setProductURL(productURL : String) : DTO {
         this.productURL = productURL
+        return this
+    }
+
+    fun setCartInfo(shoppingCart : MutableMap<String, Int>, couponCode : String) : DTO {
+        this.shoppingCart = shoppingCart
+        this.couponCode = couponCode
         return this
     }
 

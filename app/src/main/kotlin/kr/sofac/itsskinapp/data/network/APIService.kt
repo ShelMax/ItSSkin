@@ -19,4 +19,7 @@ interface APIService {
 
     @POST("./")
     fun getProduct(@Body request : ServerRequest<DTO>) : Call<ResponseObject<Product>>
+
+    @POST("./")
+    fun getCart(@Body request : ServerRequest<DTO>) : Call<ResponseObject<String>>
 }

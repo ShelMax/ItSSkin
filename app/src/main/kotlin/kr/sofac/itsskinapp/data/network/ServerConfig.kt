@@ -16,5 +16,6 @@ class ServerConfig {
         const val GET_CATEGORIES : String = "getCategoriesTree"
         const val GET_CATEGORY_PRODUCTS: String = "getProducts"
         const val GET_PRODUCT = "getProduct"
+        const val GET_CART = "getCart"
     }
 }

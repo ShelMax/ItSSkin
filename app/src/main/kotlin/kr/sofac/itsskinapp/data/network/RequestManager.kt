@@ -65,5 +65,25 @@ class RequestManager {
                 }
             })
         }
+
+        fun getCart(dto : DTO, callback : RequestCallback<String>){
+            apiService.getCart(ServerRequest(ServerConfig.GET_CART, dto))
+                    .enqueue(object : Callback<ResponseObject<String>>{
+                        override fun onFailure(call: Call<ResponseObject<String>>?, t: Throwable?) {
+                            callback.onError(t?.message!!)
+                            Log.e("- getProduct-onFailure ", t.message!!)
+                        }
+
+                        override fun onResponse(call: Call<ResponseObject<String>>?, response: Response<ResponseObject<String>>?) {
+                            if(response!!.isSuccessful){
+                                callback.onSuccess(response.body()?.dataTransferObject!!)
+                            }
+                            else{
+
+                            }
+
+                        }
+                    })
+        }
     }
 }

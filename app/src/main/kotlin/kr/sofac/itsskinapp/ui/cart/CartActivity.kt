@@ -10,11 +10,12 @@ import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.model.CartProduct
 import kr.sofac.itsskinapp.data.model.callback.CartCallback
 import kr.sofac.itsskinapp.ui.navigation.NavigationActivity
+import kr.sofac.itsskinapp.ui.ordering.OrderingActivity
 import kr.sofac.itsskinapp.util.AppPreference
 
 class CartActivity : AppCompatActivity() {
 
-    private lateinit var products : MutableList<CartProduct>
+    private lateinit var products: MutableList<CartProduct>
     private lateinit var appPreference: AppPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,12 +24,12 @@ class CartActivity : AppCompatActivity() {
         initToolbar()
         appPreference = AppPreference(this)
         products = appPreference.getCartProducts()
-        if(products.isEmpty()){
+        if (products.isEmpty()) {
             initEmptyCart()
-        }
-        else{
+        } else {
             initCart()
         }
+        checkout.setOnClickListener { startActivity(Intent(this, OrderingActivity::class.java)) }
 
     }
 
@@ -38,7 +39,7 @@ class CartActivity : AppCompatActivity() {
             override fun removeProduct(position: Int) {
                 appPreference.removeProductFromCart(products[position].product)
                 products.removeAt(position)
-                if(products.isEmpty())
+                if (products.isEmpty())
                     initEmptyCart()
             }
 
@@ -62,7 +63,8 @@ class CartActivity : AppCompatActivity() {
     private fun updateTotalPrice() {
         var totalPrice = 0.0
         products.forEach {
-            totalPrice += it.product.variant?.price!!.toDouble() * it.amount }
+            totalPrice += it.product.variant?.price!!.toDouble() * it.amount
+        }
         productsSum.text = totalPrice.toString()
     }
 
