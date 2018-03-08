@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_ordering.*
 import kr.sofac.itsskinapp.R
+import kr.sofac.itsskinapp.data.model.Cart
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
 import kr.sofac.itsskinapp.data.network.RequestManager
 import kr.sofac.itsskinapp.data.network.dto.DTO
@@ -40,8 +41,8 @@ class OrderingActivity : AppCompatActivity() {
     }
 
     private fun getCartInformation(shoppingCart : MutableMap<String, Int>, couponCode : String){
-        RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<String> {
-            override fun onSuccess(data: String) {
+        RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<Cart> {
+            override fun onSuccess(data: Cart) {
 //                view.onLoaded(data)
 //                view.setLoading(false)
                 Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
@@ -55,19 +56,19 @@ class OrderingActivity : AppCompatActivity() {
         })
     }
 
-    private fun setOrder(shoppingCart : MutableMap<String, Int>, couponCode : String){
-        RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<String> {
-            override fun onSuccess(data: String) {
-//                view.onLoaded(data)
-//                view.setLoading(false)
-                Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onError(message: String) {
-                Toast.makeText(applicationContext, "onError", Toast.LENGTH_SHORT).show()
-//                view.onLoadError(message)
-//                view.setLoading(false)
-            }
-        })
-    }
+//    private fun setOrder(shoppingCart : MutableMap<String, Int>, couponCode : String){
+//        RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<String> {
+//            override fun onSuccess(data: String) {
+////                view.onLoaded(data)
+////                view.setLoading(false)
+//                Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onError(message: String) {
+//                Toast.makeText(applicationContext, "onError", Toast.LENGTH_SHORT).show()
+////                view.onLoadError(message)
+////                view.setLoading(false)
+//            }
+//        })
+//    }
 }

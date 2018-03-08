@@ -1,6 +1,7 @@
 package kr.sofac.itsskinapp.data.network
 
 import android.util.Log
+import kr.sofac.itsskinapp.data.model.Cart
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
 import kr.sofac.itsskinapp.data.model.Category
 import kr.sofac.itsskinapp.data.network.dto.DTO
@@ -66,15 +67,15 @@ class RequestManager {
             })
         }
 
-        fun getCart(dto : DTO, callback : RequestCallback<String>){
+        fun getCart(dto : DTO, callback : RequestCallback<Cart>){
             apiService.getCart(ServerRequest(ServerConfig.GET_CART, dto))
-                    .enqueue(object : Callback<ResponseObject<String>>{
-                        override fun onFailure(call: Call<ResponseObject<String>>?, t: Throwable?) {
+                    .enqueue(object : Callback<ResponseObject<Cart>>{
+                        override fun onFailure(call: Call<ResponseObject<Cart>>?, t: Throwable?) {
                             callback.onError(t?.message!!)
                             Log.e("- getProduct-onFailure ", t.message!!)
                         }
 
-                        override fun onResponse(call: Call<ResponseObject<String>>?, response: Response<ResponseObject<String>>?) {
+                        override fun onResponse(call: Call<ResponseObject<Cart>>?, response: Response<ResponseObject<Cart>>?) {
                             if(response!!.isSuccessful){
                                 callback.onSuccess(response.body()?.dataTransferObject!!)
                             }

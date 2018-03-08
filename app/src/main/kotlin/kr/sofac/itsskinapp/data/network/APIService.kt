@@ -1,5 +1,6 @@
 package kr.sofac.itsskinapp.data.network
 
+import kr.sofac.itsskinapp.data.model.Cart
 import kr.sofac.itsskinapp.data.model.Category
 import kr.sofac.itsskinapp.data.model.Product
 import kr.sofac.itsskinapp.data.network.dto.DTO
@@ -21,5 +22,5 @@ interface APIService {
     fun getProduct(@Body request : ServerRequest<DTO>) : Call<ResponseObject<Product>>
 
     @POST("./")
-    fun getCart(@Body request : ServerRequest<DTO>) : Call<ResponseObject<String>>
+    fun getCart(@Body request : ServerRequest<DTO>) : Call<ResponseObject<Cart>>
 }
