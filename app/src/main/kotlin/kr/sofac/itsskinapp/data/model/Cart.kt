@@ -2,9 +2,6 @@ package kr.sofac.itsskinapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-/**
- * Created by Asus SoFA on 08.03.2018.
- */
 data class Cart(
         @SerializedName("purchases")
         var purchases: MutableList<Any>,
@@ -15,5 +12,4 @@ data class Cart(
         @SerializedName("coupon")
         var coupon: String,
         @SerializedName("deliveries")
-        var deliveries: MutableList<Any>) {
-}
+        var deliveries: MutableList<Delivery>)

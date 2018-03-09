@@ -1,7 +1,6 @@
 package kr.sofac.itsskinapp.ui.ordering
 
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
@@ -28,7 +27,6 @@ class OrderingActivity : AppCompatActivity() {
         }
         getCartInformation(mapCart, "")
         initToolbar()
-        Handler().postDelayed({progressBarLoadingProduct.visibility = View.GONE},1000)
     }
 
     private fun initToolbar() {
@@ -43,18 +41,31 @@ class OrderingActivity : AppCompatActivity() {
     private fun getCartInformation(shoppingCart : MutableMap<String, Int>, couponCode : String){
         RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<Cart> {
             override fun onSuccess(data: Cart) {
-//                view.onLoaded(data)
-//                view.setLoading(false)
-                Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
+                hideProgressBar()
+                fillDelivery(data)
             }
 
             override fun onError(message: String) {
-                Toast.makeText(applicationContext, "onError", Toast.LENGTH_SHORT).show()
-//                view.onLoadError(message)
-//                view.setLoading(false)
+                Toast.makeText(applicationContext, "Connection error", Toast.LENGTH_SHORT).show()
+                hideProgressBar()
+                finish()
             }
         })
     }
+
+    fun fillDelivery(cart: Cart){
+
+        priceWithDelivery.text = cart.deliveries[0].name
+        priceWithCoupon.text = cart.deliveries[0].name
+    }
+
+    fun hideProgressBar(){
+        progressBarLoadingProduct.visibility = View.GONE
+    }
+
+
+
+
 
 //    private fun setOrder(shoppingCart : MutableMap<String, Int>, couponCode : String){
 //        RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<String> {
