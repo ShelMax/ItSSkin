@@ -57,7 +57,7 @@
 
                 <android.support.design.widget.TextInputEditText
                     style="@style/AppStyleEditText"
-                    android:hint="*Your name"
+                    android:hint="@string/your_name"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
@@ -75,7 +75,7 @@
 
                 <android.support.design.widget.TextInputEditText
                     style="@style/AppStyleEditText"
-                    android:hint="*Phone number"
+                    android:hint="@string/phone_number"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
@@ -93,7 +93,7 @@
 
                 <android.support.design.widget.TextInputEditText
                     style="@style/AppStyleEditText"
-                    android:hint="*Your email"
+                    android:hint="@string/your_email"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
@@ -111,7 +111,7 @@
 
                 <android.support.design.widget.TextInputEditText
                     style="@style/AppStyleEditText"
-                    android:hint="Delivery adress" />
+                    android:hint="@string/delivery_adress" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -128,7 +128,7 @@
 
                 <android.support.design.widget.TextInputEditText
                     style="@style/AppStyleEditText"
-                    android:hint="Comment"
+                    android:hint="@string/comment"
                     android:maxLines="4"
                     android:minLines="4" />
             </android.support.design.widget.TextInputLayout>
@@ -141,7 +141,7 @@
                 android:layout_marginStart="16dp"
 
                 android:layout_marginTop="8dp"
-                android:text="Доставка"
+                android:text="@string/text_label_delivery"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -154,6 +154,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +169,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Цена со скидкой"
+                android:text="@string/price_with_coupon_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -179,7 +182,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Цена с доставкой"
+                android:text="@string/price_with_delivery_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -195,7 +198,7 @@
                 android:background="@drawable/button_add_to_cart"
                 android:paddingEnd="30dp"
                 android:paddingStart="30dp"
-                android:text="Отправить заказ"
+                android:text="@string/send_order"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

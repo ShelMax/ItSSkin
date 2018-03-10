@@ -110,7 +110,7 @@
             app:layout_constraintBottom_toTopOf="@id/priceSecond"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="dfgdfgdfg" />
+            tools:text="some sub title" />
 
         <TextView
             android:id="@+id/priceSecond"

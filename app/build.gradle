@@ -28,23 +28,31 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:0.1'
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:design:27.0.2'
-    implementation 'com.android.support:support-vector-drawable:27.0.2'
-    implementation 'com.android.support:support-v4:27.0.2'
+    implementation 'androidx.core:core-ktx:0.2'
+    implementation "com.android.support:appcompat-v7:$android_support_version"
+    implementation "com.android.support.constraint:constraint-layout:1.0.2"
+    implementation "com.android.support:design:$android_support_version"
+    implementation "com.android.support:support-vector-drawable:$android_support_version"
+    implementation "com.android.support:support-v4:$android_support_version"
+
     //REST + JSON
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     kapt 'com.github.bumptech.glide:compiler:4.6.1'
+
+    //Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation files('libs/liqpay-sdk-0.6.jar')
+
+//    //LiqPay
+//    implementation files('libs/liqpay-sdk-0.6.jar')
+
+    //SlideUp
     implementation "com.github.mancj:SlideUp-Android:2.2.7.1"
 }

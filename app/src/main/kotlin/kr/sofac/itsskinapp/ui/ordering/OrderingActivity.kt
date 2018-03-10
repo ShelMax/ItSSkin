@@ -3,6 +3,7 @@ package kr.sofac.itsskinapp.ui.ordering
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.RadioButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_ordering.*
 import kr.sofac.itsskinapp.R
@@ -23,14 +24,14 @@ class OrderingActivity : AppCompatActivity() {
         val mapCart: MutableMap<String, Int> = mutableMapOf()
         appPreference = AppPreference(this)
         for(cartProduct in appPreference.getCartProducts()){
-            mapCart[cartProduct.product.id.toString()] = cartProduct.amount
+            mapCart[cartProduct.product.variant.toString()] = cartProduct.amount
         }
         getCartInformation(mapCart, "")
         initToolbar()
     }
 
     private fun initToolbar() {
-        toolbar.title = "Оформление товара"
+        toolbar.title = getString(R.string.ordering_product)
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.arrow_left)
         toolbar.setNavigationOnClickListener {
@@ -46,7 +47,7 @@ class OrderingActivity : AppCompatActivity() {
             }
 
             override fun onError(message: String) {
-                Toast.makeText(applicationContext, "Connection error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, getString(R.string.connection_error), Toast.LENGTH_SHORT).show()
                 hideProgressBar()
                 finish()
             }
@@ -54,10 +55,18 @@ class OrderingActivity : AppCompatActivity() {
     }
 
     fun fillDelivery(cart: Cart){
+        for (delivery in cart.deliveries){
+            val radioButton = RadioButton(this)
+            radioButton.text = delivery.name
+            deliveryGroup.addView(radioButton)
+        }
 
-        priceWithDelivery.text = cart.deliveries[0].name
-        priceWithCoupon.text = cart.deliveries[0].name
+
+        priceWithDelivery.text = ""
+        priceWithCoupon.text = ""
     }
+
+
 
     fun hideProgressBar(){
         progressBarLoadingProduct.visibility = View.GONE

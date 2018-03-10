@@ -16,8 +16,8 @@ class ScrollingProductAdapter(private val listProducts: List<Product>, private v
         fun onMyClick(position: Int)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent?.context).inflate(R.layout.item_product_image_title_price, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_product_image_title_price, parent, false)
         return ViewHolder(view)
     }
 

@@ -16,8 +16,8 @@ class CategoryAdapter(private val categories : List<Category>,
                       private val callback : CategoryCallback
                       ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view : View = LayoutInflater.from(parent?.context).inflate(R.layout.item_category, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view : View = LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
         return ViewHolder(view)
     }
 

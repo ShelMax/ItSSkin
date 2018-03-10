@@ -1,21 +1,35 @@
 <resources>
     <string name="app_name">It\'S SKIN</string>
     <string name="it_s_skin">It\'S SKIN</string>
-    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_activity_navigation">Головний екран</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="order_products">Order products</string>
-    <string name="code_product">Code product: 0000</string>
-    <string name="are_available">Are available</string>
+    <string name="action_settings">Налаштування</string>
+    <string name="order_products">Замовлення продуктів</string>
+    <string name="code_product">Код продукту: 0000</string>
+    <string name="are_available">Є в наявності</string>
     <string name="rating">Рейтинг</string>
     <string name="price_value">500 UAH</string>
     <string name="add_to_cart">У кошик</string>
     <string name="comments">Коментарі</string>
-    <string name="recommendations">RECOMMENDATIONS</string>
-    <string name="title">Title</string>
-    <string name="user_name">User Name</string>
+    <string name="recommendations">Популярні товари</string>
+    <string name="title">Заголовок</string>
+    <string name="user_name">Ваше ім\'я</string>
     <string name="cart">Кошик</string>
+    <string name="ordering_product">Оформлення товару</string>
+    <string name="connection_error">Помилка з\'єднання</string>
+    <string name="message_empty_list_cart">Упс, кошик поки що порожній. Давайте це виправимо</string>
+    <string name="back_to_shop_button_text">До магазину</string>
+    <string name="sum_cost_all_products">Всього</string>
+    <string name="your_name">*Ваше ім\'я</string>
+    <string name="phone_number">*Ваш номер телефону</string>
+    <string name="your_email">*Адреса електронної скриньки</string>
+    <string name="delivery_adress">Адреса доставки</string>
+    <string name="comment">Коментар</string>
+    <string name="text_label_delivery">Вибір способу доставки:</string>
+    <string name="price_with_coupon_label">Ціна зі знижкою</string>
+    <string name="price_with_delivery_label">Ціна з доставкою</string>
+    <string name="send_order">Надіслати замовлення</string>
 </resources>

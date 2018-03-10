@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.view.View
 import kr.sofac.itsskinapp.data.model.Product
 import android.view.LayoutInflater
+import com.bumptech.glide.request.RequestOptions
 import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.network.ServerConfig
 import kotlinx.android.synthetic.main.item_grid.view.*
@@ -13,8 +14,8 @@ import kr.sofac.itsskinapp.data.model.callback.GridCallback
 
 class GridAdapter(private val products: List<Product>, private val callback : GridCallback) : RecyclerView.Adapter<GridAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent?.context).inflate(R.layout.item_grid, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_grid, parent, false)
         return ViewHolder(v)
     }
 
@@ -22,7 +23,7 @@ class GridAdapter(private val products: List<Product>, private val callback : Gr
         GlideApp.with(holder.itemView)
                 .load(ServerConfig.IMAGE_URL + products[position*2].image?.filename)
                 .override(400,400)
-//                .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
+                .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
                 .into(holder.itemView.imageFirst)
         holder.itemView.titleFirst.text = products[position*2].metaTitle
         holder.itemView.priceFirst.text = products[position*2].variant?.price
@@ -31,7 +32,7 @@ class GridAdapter(private val products: List<Product>, private val callback : Gr
         if (position * 2 != products.size - 1) {
             GlideApp.with(holder.itemView)
                     .load(ServerConfig.IMAGE_URL + products[position*2 + 1].image?.filename)
-//                    .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
+                    .apply(RequestOptions().placeholder(R.drawable.placeholder_image))
                     .override(400,400)
                     .into(holder.itemView.imageSecond)
             holder.itemView.titleSecond.text = products[position * 2 + 1].metaTitle
