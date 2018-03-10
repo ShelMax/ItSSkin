@@ -153,7 +153,6 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
 
     }
 
-    ////////////// TODO Need learn this moment
     companion object {
         fun newInstance(productURL: String?) =
                 ProductDetailFragment().apply {

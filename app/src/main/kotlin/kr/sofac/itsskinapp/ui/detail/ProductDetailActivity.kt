@@ -17,8 +17,6 @@ class ProductDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        //TODO Add opening product after click on similar product
-
         val productUrl = intent.getStringExtra(Constants.PRODUCT_URL)
 
         setupActionBar(R.id.toolbar){

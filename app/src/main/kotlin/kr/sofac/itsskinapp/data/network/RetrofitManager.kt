@@ -8,7 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitManager {
 
     companion object {
-
         fun getApiService(): APIService {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
@@ -23,4 +22,5 @@ class RetrofitManager {
                     .create(APIService::class.java)
         }
     }
+
 }
