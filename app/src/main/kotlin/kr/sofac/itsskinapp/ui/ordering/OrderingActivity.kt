@@ -60,10 +60,14 @@ class OrderingActivity : AppCompatActivity() {
             radioButton.text = delivery.name
             deliveryGroup.addView(radioButton)
         }
+        deliveryGroup.check(0)
 
 
-        priceWithDelivery.text = ""
-        priceWithCoupon.text = ""
+
+        val priceCoupon = cart.totalPrice + (cart.coupon?.toInt() ?: 0)
+        val priceDelivery = cart.totalPrice + cart.deliveries[0].price.toInt()
+        priceWithCoupon.text = priceCoupon.toString()
+        priceWithDelivery.text = priceDelivery.toString()
     }
 
 
