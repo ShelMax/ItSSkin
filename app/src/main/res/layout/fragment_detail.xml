@@ -332,7 +332,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="@android:color/white"
-        android:theme="@style/AppTheme.WhiteAccent">
+        android:theme="@style/AppTheme.DarkAccent">
 
         <ProgressBar
             style="?android:attr/progressBarStyleSmall"

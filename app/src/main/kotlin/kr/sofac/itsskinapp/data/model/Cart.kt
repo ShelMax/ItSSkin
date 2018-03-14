@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Cart(
         @SerializedName("purchases")
-        var purchases: MutableMap<String, Purchases>,
+        var purchases: List <Purchases>,
         @SerializedName("total_price")
         var totalPrice: Int,
         @SerializedName("total_products")

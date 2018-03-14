@@ -4,6 +4,7 @@ import kr.sofac.itsskinapp.BasePresenter
 import kr.sofac.itsskinapp.data.model.Product
 import kr.sofac.itsskinapp.BaseView
 import kr.sofac.itsskinapp.data.model.Image
+import kr.sofac.itsskinapp.data.model.ProductDetail
 
 interface ProductDetailContract {
 
@@ -13,7 +14,7 @@ interface ProductDetailContract {
 
         fun showImageViewPager(images: List<Image>)
 
-        fun fillProductDescription(product: Product)
+        fun fillProductDescription(product: ProductDetail)
 
         fun showSimilarProductScroller(listProduct: List<Product>)
 

@@ -15,5 +15,6 @@ class ServerConfig {
         const val GET_CATEGORY_PRODUCTS: String = "getProducts"
         const val GET_PRODUCT = "getProduct"
         const val GET_CART = "getCart"
+        const val SET_ORDER = "setOrder"
     }
 }

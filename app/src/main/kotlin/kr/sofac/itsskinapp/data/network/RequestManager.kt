@@ -1,11 +1,9 @@
 package kr.sofac.itsskinapp.data.network
 
 import android.util.Log
-import kr.sofac.itsskinapp.data.model.Cart
+import kr.sofac.itsskinapp.data.model.*
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
-import kr.sofac.itsskinapp.data.model.Category
 import kr.sofac.itsskinapp.data.network.dto.DTO
-import kr.sofac.itsskinapp.data.model.Product
 import kr.sofac.itsskinapp.data.network.dto.ServerResponse
 import kr.sofac.itsskinapp.data.network.dto.ServerRequest
 import retrofit2.Call
@@ -47,15 +45,15 @@ class RequestManager {
         }
 
 
-        fun getProduct(dto : DTO, callback : RequestCallback<Product>){
+        fun getProduct(dto : DTO, callback : RequestCallback<ProductDetail>){
             apiService.getProduct(ServerRequest(ServerConfig.GET_PRODUCT, dto))
-                    .enqueue(object : Callback<ServerResponse<Product>>{
-                override fun onFailure(call: Call<ServerResponse<Product>>?, t: Throwable?) {
+                    .enqueue(object : Callback<ServerResponse<ProductDetail>>{
+                override fun onFailure(call: Call<ServerResponse<ProductDetail>>?, t: Throwable?) {
                     callback.onError(t?.message!!)
                     Log.e("- getProduct-onFailure ", t.message!!)
                 }
 
-                override fun onResponse(call: Call<ServerResponse<Product>>?, response: Response<ServerResponse<Product>>?) {
+                override fun onResponse(call: Call<ServerResponse<ProductDetail>>?, response: Response<ServerResponse<ProductDetail>>?) {
                     if(response!!.isSuccessful){
                         callback.onSuccess(response.body()?.dataTransferObject!!)
                     }
@@ -72,10 +70,30 @@ class RequestManager {
                     .enqueue(object : Callback<ServerResponse<Cart>>{
                         override fun onFailure(call: Call<ServerResponse<Cart>>?, t: Throwable?) {
                             callback.onError(t?.message!!)
-                            Log.e("- getProduct-onFailure ", t.message!!)
+                            Log.e("- getCart-onFailure ", t.message!!)
                         }
 
                         override fun onResponse(call: Call<ServerResponse<Cart>>?, response: Response<ServerResponse<Cart>>?) {
+                            if(response!!.isSuccessful){
+                                callback.onSuccess(response.body()?.dataTransferObject!!)
+                            }
+                            else{
+
+                            }
+
+                        }
+                    })
+        }
+
+        fun setOrder(makeOrder: MakeOrder, callback : RequestCallback<String>){
+            apiService.setOrder(ServerRequest(ServerConfig.SET_ORDER, makeOrder))
+                    .enqueue(object : Callback<ServerResponse<String>>{
+                        override fun onFailure(call: Call<ServerResponse<String>>?, t: Throwable?) {
+                            callback.onError(t?.message!!)
+                            Log.e("- setOrder-onFailure ", t.message!!)
+                        }
+
+                        override fun onResponse(call: Call<ServerResponse<String>>?, response: Response<ServerResponse<String>>?) {
                             if(response!!.isSuccessful){
                                 callback.onSuccess(response.body()?.dataTransferObject!!)
                             }

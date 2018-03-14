@@ -8,6 +8,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_ordering.*
 import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.model.Cart
+import kr.sofac.itsskinapp.data.model.MakeOrder
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
 import kr.sofac.itsskinapp.data.network.RequestManager
 import kr.sofac.itsskinapp.data.network.dto.DTO
@@ -23,8 +24,8 @@ class OrderingActivity : AppCompatActivity() {
 
         val mapCart: MutableMap<String, Int> = mutableMapOf()
         appPreference = AppPreference(this)
-        for(cartProduct in appPreference.getCartProducts()){
-            mapCart[cartProduct.product.variant.toString()] = cartProduct.amount
+        for (cartProduct in appPreference.getCartProducts()) {
+            mapCart[cartProduct.product.variant.id.toString()] = cartProduct.amount
         }
         getCartInformation(mapCart, "")
         initToolbar()
@@ -39,8 +40,8 @@ class OrderingActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCartInformation(shoppingCart : MutableMap<String, Int>, couponCode : String){
-        RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<Cart> {
+    private fun getCartInformation(shoppingCart: MutableMap<String, Int>, couponCode: String) {
+        RequestManager.getCart(DTO().setCartInfo(shoppingCart, couponCode), object : RequestCallback<Cart> {
             override fun onSuccess(data: Cart) {
                 hideProgressBar()
                 fillDelivery(data)
@@ -54,45 +55,43 @@ class OrderingActivity : AppCompatActivity() {
         })
     }
 
-    fun fillDelivery(cart: Cart){
-        for (delivery in cart.deliveries){
+    fun fillDelivery(cart: Cart) {
+        for (delivery in cart.deliveries) {
             val radioButton = RadioButton(this)
             radioButton.text = delivery.name
             deliveryGroup.addView(radioButton)
         }
-        deliveryGroup.check(0)
+        deliveryGroup.check(deliveryGroup.getChildAt(0).id)
 
-
-
-        val priceCoupon = cart.totalPrice + (cart.coupon?.toInt() ?: 0)
-        val priceDelivery = cart.totalPrice + cart.deliveries[0].price.toInt()
+        val priceCoupon = cart.totalPrice - (cart.coupon?.toDouble() ?: 0.0)
+        val priceDelivery = cart.totalPrice + (cart.deliveries[0].price?.toDouble() ?: 0.0)
         priceWithCoupon.text = priceCoupon.toString()
         priceWithDelivery.text = priceDelivery.toString()
+
+        deliveryGroup.setOnCheckedChangeListener { group, checkedId ->
+            priceWithDelivery.text = (cart.totalPrice + (cart.deliveries[checkedId-1].price?.toDouble() ?: 0.0)).toString()
+        }
+
+        buttonSetOrder.setOnClickListener {  }
     }
 
-
-
-    fun hideProgressBar(){
+    fun hideProgressBar() {
         progressBarLoadingProduct.visibility = View.GONE
     }
 
+    private fun setOrder(shoppingCart : MutableMap<String, Int>, couponCode : String){
+        var makeOrder: MakeOrder
+        RequestManager.setOrder(makeOrder, object : RequestCallback<String> {
+            override fun onSuccess(data: String) {
+                Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(message: String) {
+                Toast.makeText(applicationContext, "onError", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 
 
 
-
-//    private fun setOrder(shoppingCart : MutableMap<String, Int>, couponCode : String){
-//        RequestManager.getCart(DTO().setCartInfo(shoppingCart,couponCode), object : RequestCallback<String> {
-//            override fun onSuccess(data: String) {
-////                view.onLoaded(data)
-////                view.setLoading(false)
-//                Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
-//            }
-//
-//            override fun onError(message: String) {
-//                Toast.makeText(applicationContext, "onError", Toast.LENGTH_SHORT).show()
-////                view.onLoadError(message)
-////                view.setLoading(false)
-//            }
-//        })
-//    }
 }

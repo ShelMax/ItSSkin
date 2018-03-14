@@ -1,11 +1,9 @@
 package kr.sofac.itsskinapp.data.network
 
-import kr.sofac.itsskinapp.data.model.Cart
-import kr.sofac.itsskinapp.data.model.Category
-import kr.sofac.itsskinapp.data.model.Product
+import kr.sofac.itsskinapp.data.model.*
 import kr.sofac.itsskinapp.data.network.dto.DTO
-import kr.sofac.itsskinapp.data.network.dto.ServerResponse
 import kr.sofac.itsskinapp.data.network.dto.ServerRequest
+import kr.sofac.itsskinapp.data.network.dto.ServerResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -19,8 +17,12 @@ interface APIService {
     fun getCategoryProducts(@Body request : ServerRequest<DTO>) : Call<ServerResponse<List<Product>>>
 
     @POST("./")
-    fun getProduct(@Body request : ServerRequest<DTO>) : Call<ServerResponse<Product>>
+    fun getProduct(@Body request : ServerRequest<DTO>) : Call<ServerResponse<ProductDetail>>
 
     @POST("./")
     fun getCart(@Body request : ServerRequest<DTO>) : Call<ServerResponse<Cart>>
+
+    @POST("./")
+    fun setOrder(@Body request : ServerRequest<MakeOrder>) : Call<ServerResponse<String>>
+
 }

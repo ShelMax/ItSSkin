@@ -15,7 +15,7 @@ data class Delivery(
         @SerializedName("free_from")
         var freeFrom: String,
         @SerializedName("price")
-        var price: String = "0",
+        var price: String? = "0",
         @SerializedName("enabled")
         var enabled: Int,
         @SerializedName("position")

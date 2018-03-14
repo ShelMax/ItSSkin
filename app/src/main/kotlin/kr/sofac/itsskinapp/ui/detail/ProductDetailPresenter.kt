@@ -1,6 +1,7 @@
 package kr.sofac.itsskinapp.ui.detail
 
 import kr.sofac.itsskinapp.data.model.Product
+import kr.sofac.itsskinapp.data.model.ProductDetail
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
 import kr.sofac.itsskinapp.data.network.RequestManager
 import kr.sofac.itsskinapp.data.network.dto.DTO
@@ -25,8 +26,8 @@ class ProductDetailPresenter(
             view.showToastMessage("Not have product for view!")
             return
         }
-        RequestManager.getProduct(DTO().setProductURL(productUrl), object : RequestCallback<Product> {
-            override fun onSuccess(data: Product) {
+        RequestManager.getProduct(DTO().setProductURL(productUrl), object : RequestCallback<ProductDetail> {
+            override fun onSuccess(data: ProductDetail) {
                 view.showImageViewPager(data.images ?: listOf())
                 view.fillProductDescription(data)
                 if (data.relatedProducts != null)

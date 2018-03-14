@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.model.Image
 import kr.sofac.itsskinapp.data.model.Product
+import kr.sofac.itsskinapp.data.model.ProductDetail
 import kr.sofac.itsskinapp.util.AppPreference
 import kr.sofac.itsskinapp.util.Constants
 
@@ -46,7 +47,7 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         return view
     }
 
-    override fun fillProductDescription(product: Product) {
+    override fun fillProductDescription(product: ProductDetail) {
 
         textTitle.text = product.name
         textCodeProduct.text = product.variant?.sku
@@ -68,7 +69,7 @@ class ProductDetailFragment : Fragment(), ProductDetailContract.View {
         }
 
         addToCart.setOnClickListener {
-            appPreference.addProductToCart(product)
+//            appPreference.addProductToCart(product)
             Snackbar.make(addToCart, "Додано у кошик", Snackbar.LENGTH_LONG).show()
         }
 
