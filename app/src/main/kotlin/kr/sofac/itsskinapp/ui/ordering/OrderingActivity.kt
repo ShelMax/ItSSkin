@@ -3,11 +3,14 @@ package kr.sofac.itsskinapp.ui.ordering
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_ordering.*
+import kotlinx.android.synthetic.main.activity_ordering.view.*
 import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.data.model.Cart
+import kr.sofac.itsskinapp.data.model.CheckOut
 import kr.sofac.itsskinapp.data.model.MakeOrder
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
 import kr.sofac.itsskinapp.data.network.RequestManager
@@ -17,12 +20,13 @@ import kr.sofac.itsskinapp.util.AppPreference
 class OrderingActivity : AppCompatActivity() {
 
     private lateinit var appPreference: AppPreference
+    lateinit var mapCart: MutableMap<String, Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ordering)
 
-        val mapCart: MutableMap<String, Int> = mutableMapOf()
+        mapCart = mutableMapOf()
         appPreference = AppPreference(this)
         for (cartProduct in appPreference.getCartProducts()) {
             mapCart[cartProduct.product.variant.id.toString()] = cartProduct.amount
@@ -69,18 +73,29 @@ class OrderingActivity : AppCompatActivity() {
         priceWithDelivery.text = priceDelivery.toString()
 
         deliveryGroup.setOnCheckedChangeListener { group, checkedId ->
-            priceWithDelivery.text = (cart.totalPrice + (cart.deliveries[checkedId-1].price?.toDouble() ?: 0.0)).toString()
+            priceWithDelivery.text = (cart.totalPrice + (cart.deliveries[checkedId - 1].price?.toDouble()
+                    ?: 0.0)).toString()
         }
 
-        buttonSetOrder.setOnClickListener {  }
+        buttonSetOrder.setOnClickListener {
+            setOrder(cart.deliveries[deliveryGroup.checkedRadioButtonId].id)
+        }
     }
 
     fun hideProgressBar() {
         progressBarLoadingProduct.visibility = View.GONE
     }
 
-    private fun setOrder(shoppingCart : MutableMap<String, Int>, couponCode : String){
-        var makeOrder: MakeOrder
+    private fun setOrder(idDeliver: Int) {
+        val checkOut = CheckOut(
+                idDeliver,
+                editTextName.text.toString(),
+                editTextEmail.text.toString(),
+                editTextPhoneNumber.text.toString(),
+                editTextDeliveryAddress.text.toString(),
+                editTextComment.text.toString(),
+                "")
+        val makeOrder: MakeOrder = MakeOrder(mapCart, "", checkOut)
         RequestManager.setOrder(makeOrder, object : RequestCallback<String> {
             override fun onSuccess(data: String) {
                 Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
@@ -91,7 +106,6 @@ class OrderingActivity : AppCompatActivity() {
             }
         })
     }
-
 
 
 }

@@ -56,6 +56,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextName"
                     style="@style/AppStyleEditText"
                     android:hint="@string/your_name"
                     android:maxLines="1" />
@@ -74,6 +75,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameLayout">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextPhoneNumber"
                     style="@style/AppStyleEditText"
                     android:hint="@string/phone_number"
                     android:maxLines="1" />
@@ -92,6 +94,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/phoneLayout">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextEmail"
                     style="@style/AppStyleEditText"
                     android:hint="@string/your_email"
                     android:maxLines="1" />
@@ -110,6 +113,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/emailLayout">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextDeliveryAddress"
                     style="@style/AppStyleEditText"
                     android:hint="@string/delivery_adress" />
             </android.support.design.widget.TextInputLayout>
@@ -127,6 +131,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/deliveryAdressLayout">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/editTextComment"
                     style="@style/AppStyleEditText"
                     android:hint="@string/comment"
                     android:maxLines="4"
