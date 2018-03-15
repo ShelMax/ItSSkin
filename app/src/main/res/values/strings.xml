@@ -32,4 +32,7 @@
     <string name="price_with_coupon_label">Ціна зі знижкою</string>
     <string name="price_with_delivery_label">Ціна з доставкою</string>
     <string name="send_order">Надіслати замовлення</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

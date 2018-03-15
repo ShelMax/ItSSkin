@@ -67,14 +67,14 @@ class OrderingActivity : AppCompatActivity() {
         }
         deliveryGroup.check(deliveryGroup.getChildAt(0).id)
 
-        val priceCoupon = cart.totalPrice - (cart.coupon?.toDouble() ?: 0.0)
-        val priceDelivery = cart.totalPrice + (cart.deliveries[0].price?.toDouble() ?: 0.0)
+        val priceCoupon = cart.totalPrice.toDouble() - (cart.coupon?.toDouble() ?: 0.0)
+        val priceDelivery = cart.totalPrice.toDouble() + (cart.deliveries[0].price?.toDouble() ?: 0.0)
         priceWithCoupon.text = priceCoupon.toString()
         priceWithDelivery.text = priceDelivery.toString()
 
         deliveryGroup.setOnCheckedChangeListener { group, checkedId ->
-            priceWithDelivery.text = (cart.totalPrice + (cart.deliveries[checkedId - 1].price?.toDouble()
-                    ?: 0.0)).toString()
+            Toast.makeText(this, checkedId.toString(), Toast.LENGTH_SHORT).show()
+            priceWithDelivery.text = (cart.totalPrice.toDouble() + (cart.deliveries[checkedId-1].price?.toDouble() ?: 0.0)).toString()
         }
 
         buttonSetOrder.setOnClickListener {

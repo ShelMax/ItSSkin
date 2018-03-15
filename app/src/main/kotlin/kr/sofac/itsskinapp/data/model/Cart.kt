@@ -12,4 +12,4 @@ data class Cart(
         @SerializedName("coupon")
         var coupon: String? = "0",
         @SerializedName("deliveries")
-        var deliveries: MutableList<Delivery>)
+        var deliveries: List<Delivery>)
