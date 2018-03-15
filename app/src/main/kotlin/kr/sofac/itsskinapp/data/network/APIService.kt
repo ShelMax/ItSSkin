@@ -25,4 +25,6 @@ interface APIService {
     @POST("./")
     fun setOrder(@Body request : ServerRequest<MakeOrder>) : Call<ServerResponse<String>>
 
+    @POST("./")
+    fun setGoogleKey(@Body request : ServerRequest<GoogleCloudKey>) : Call<ServerResponse<String>>
 }

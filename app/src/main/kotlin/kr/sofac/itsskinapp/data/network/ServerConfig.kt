@@ -16,5 +16,6 @@ class ServerConfig {
         const val GET_PRODUCT = "getProduct"
         const val GET_CART = "getCart"
         const val SET_ORDER = "setOrder"
+        const val SET_GOOGLE_KEY = "setGoogleKey"
     }
 }

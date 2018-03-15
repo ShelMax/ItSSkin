@@ -104,5 +104,25 @@ class RequestManager {
                         }
                     })
         }
+
+        fun setGoogleKey(googleCloudKey: String, callback : RequestCallback<String>){
+            apiService.setGoogleKey(ServerRequest(ServerConfig.SET_GOOGLE_KEY, GoogleCloudKey(googleCloudKey)))
+                    .enqueue(object : Callback<ServerResponse<String>>{
+                        override fun onFailure(call: Call<ServerResponse<String>>?, t: Throwable?) {
+                            callback.onError(t?.message!!)
+                            Log.e("GoogleKey-ErrorRequest", t.message!!)
+                        }
+
+                        override fun onResponse(call: Call<ServerResponse<String>>?, response: Response<ServerResponse<String>>?) {
+                            if(response!!.isSuccessful){
+                                callback.onSuccess(response.body()?.dataTransferObject!!)
+                            }
+                            else{
+
+                            }
+
+                        }
+                    })
+        }
     }
 }

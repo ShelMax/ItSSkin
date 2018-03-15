@@ -1,9 +1,10 @@
-package kr.sofac.itsskinapp
+package kr.sofac.itsskinapp.util.service
 
 import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.FirebaseInstanceIdService
+import kr.sofac.itsskinapp.util.AppPreference
 
 
 /**
@@ -12,9 +13,10 @@ import com.google.firebase.iid.FirebaseInstanceIdService
 class MyFirebaseInstanceIDService: FirebaseInstanceIdService() {
 
     override fun onTokenRefresh() {
-        val refreshedToken = FirebaseInstanceId.getInstance().token
 
+        val refreshedToken = FirebaseInstanceId.getInstance().token
         Log.e(TAG, "Refreshed token: " + refreshedToken!!)
+        AppPreference(this).saveGoogleCloudKey(refreshedToken)
 
     }
 

@@ -21,4 +21,16 @@ class SplashPresenter(private val view : SplashContract.View) : SplashContract.P
             }
         })
     }
+
+    override fun sendingGoogleCloudKey(key: String) {
+        RequestManager.setGoogleKey(key, object : RequestCallback<String>{
+            override fun onSuccess(data: String) {
+
+            }
+
+            override fun onError(message: String) {
+
+            }
+        })
+    }
 }

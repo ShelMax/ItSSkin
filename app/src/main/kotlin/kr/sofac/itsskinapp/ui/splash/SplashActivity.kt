@@ -18,6 +18,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
         setContentView(R.layout.activity_splash)
         presenter = SplashPresenter(this)
         presenter.loadCategories()
+
     }
 
     override fun setLoading(isLoading: Boolean) {
@@ -34,9 +35,18 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
     }
 
     override fun onLoaded(categories: List<Category>) {
-        AppPreference(this).setCategories(categories)
+        val appPreference = AppPreference(this)
+        appPreference.setCategories(categories)
+        presenter.sendingGoogleCloudKey(appPreference.getGoogleCloudKey())
+        startNavigationActivity()
+
+    }
+
+    override fun startNavigationActivity() {
         startActivity(Intent(this, NavigationActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
         finishAffinity()
     }
+
+
 }

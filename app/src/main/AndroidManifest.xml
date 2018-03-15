@@ -43,13 +43,13 @@
         <activity android:name=".ui.ordering.OrderingActivity"
             android:screenOrientation="portrait"/>
 
-        <service android:name=".MyFirebaseInstanceIDService">
+        <service android:name=".util.service.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name=".util.service.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

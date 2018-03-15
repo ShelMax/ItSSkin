@@ -7,9 +7,11 @@ interface SplashContract {
 
     interface View : BaseView{
         fun onLoaded(categories : List<Category>)
+        fun startNavigationActivity()
     }
 
     interface Presenter{
         fun loadCategories()
+        fun sendingGoogleCloudKey(key: String)
     }
 }

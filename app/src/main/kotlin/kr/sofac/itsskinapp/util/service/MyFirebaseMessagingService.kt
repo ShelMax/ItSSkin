@@ -1,10 +1,8 @@
-package kr.sofac.itsskinapp
+package kr.sofac.itsskinapp.util.service
 
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.Service
 import android.content.Intent
-import android.os.IBinder
 import com.google.firebase.messaging.FirebaseMessagingService
 import android.content.ContentValues.TAG
 import android.content.Context
@@ -12,6 +10,7 @@ import android.media.RingtoneManager
 import android.support.v4.app.NotificationCompat
 import android.util.Log
 import com.google.firebase.messaging.RemoteMessage
+import kr.sofac.itsskinapp.R
 import kr.sofac.itsskinapp.ui.navigation.NavigationActivity
 
 
