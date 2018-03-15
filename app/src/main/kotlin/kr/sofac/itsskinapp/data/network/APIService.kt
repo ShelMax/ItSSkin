@@ -23,7 +23,7 @@ interface APIService {
     fun getCart(@Body request : ServerRequest<DTO>) : Call<ServerResponse<Cart>>
 
     @POST("./")
-    fun setOrder(@Body request : ServerRequest<MakeOrder>) : Call<ServerResponse<String>>
+    fun setOrder(@Body request : ServerRequest<MakeOrder>) : Call<ServerResponse<EmptyResponseContainer>>
 
     @POST("./")
     fun setGoogleKey(@Body request : ServerRequest<GoogleCloudKey>) : Call<ServerResponse<String>>

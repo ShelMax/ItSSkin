@@ -12,11 +12,14 @@ import kr.sofac.itsskinapp.util.AppPreference
 class SplashActivity : AppCompatActivity(), SplashContract.View {
 
     private lateinit var presenter : SplashContract.Presenter
+    lateinit var appPreference: AppPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         presenter = SplashPresenter(this)
+        appPreference = AppPreference(this)
+        presenter.sendingGoogleCloudKey(appPreference.getGoogleCloudKey())
         presenter.loadCategories()
 
     }
@@ -35,9 +38,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
     }
 
     override fun onLoaded(categories: List<Category>) {
-        val appPreference = AppPreference(this)
         appPreference.setCategories(categories)
-        presenter.sendingGoogleCloudKey(appPreference.getGoogleCloudKey())
         startNavigationActivity()
 
     }

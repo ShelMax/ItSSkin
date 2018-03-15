@@ -3,6 +3,7 @@ package kr.sofac.itsskinapp.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import android.util.Log
 import androidx.content.edit
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -69,12 +70,8 @@ class AppPreference(context: Context) {
     }
 
     fun getGoogleCloudKey(): String {
+        Log.e(Constants.GOOGLE_CLOUD_KEY + " get ", preferences.getString(Constants.GOOGLE_CLOUD_KEY, ""))
         return preferences.getString(Constants.GOOGLE_CLOUD_KEY, "")
     }
-
-    fun removeGoogleCloudKey() {
-        preferences.edit { putString(Constants.GOOGLE_CLOUD_KEY, "") }
-    }
-
 
 }

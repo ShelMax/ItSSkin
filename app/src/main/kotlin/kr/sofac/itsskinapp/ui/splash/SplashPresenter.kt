@@ -1,5 +1,6 @@
 package kr.sofac.itsskinapp.ui.splash
 
+import android.util.Log
 import kr.sofac.itsskinapp.data.model.Category
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
 import kr.sofac.itsskinapp.data.network.RequestManager
@@ -25,11 +26,11 @@ class SplashPresenter(private val view : SplashContract.View) : SplashContract.P
     override fun sendingGoogleCloudKey(key: String) {
         RequestManager.setGoogleKey(key, object : RequestCallback<String>{
             override fun onSuccess(data: String) {
-
+                Log.e("onSuccess - GKey", data)
             }
 
             override fun onError(message: String) {
-
+                Log.e("onError - GKey", message)
             }
         })
     }

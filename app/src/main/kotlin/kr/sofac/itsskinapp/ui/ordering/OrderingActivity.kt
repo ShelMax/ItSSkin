@@ -1,20 +1,18 @@
 package kr.sofac.itsskinapp.ui.ordering
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_ordering.*
-import kotlinx.android.synthetic.main.activity_ordering.view.*
 import kr.sofac.itsskinapp.R
-import kr.sofac.itsskinapp.data.model.Cart
-import kr.sofac.itsskinapp.data.model.CheckOut
-import kr.sofac.itsskinapp.data.model.MakeOrder
+import kr.sofac.itsskinapp.data.model.*
 import kr.sofac.itsskinapp.data.model.callback.RequestCallback
 import kr.sofac.itsskinapp.data.network.RequestManager
 import kr.sofac.itsskinapp.data.network.dto.DTO
+import kr.sofac.itsskinapp.ui.navigation.NavigationActivity
 import kr.sofac.itsskinapp.util.AppPreference
 
 class OrderingActivity : AppCompatActivity() {
@@ -22,12 +20,13 @@ class OrderingActivity : AppCompatActivity() {
     private lateinit var appPreference: AppPreference
     lateinit var mapCart: MutableMap<String, Int>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ordering)
-
-        mapCart = mutableMapOf()
         appPreference = AppPreference(this)
+        mapCart = mutableMapOf()
+
         for (cartProduct in appPreference.getCartProducts()) {
             mapCart[cartProduct.product.variant.id.toString()] = cartProduct.amount
         }
@@ -96,8 +95,10 @@ class OrderingActivity : AppCompatActivity() {
                 editTextComment.text.toString(),
                 "")
         val makeOrder: MakeOrder = MakeOrder(mapCart, "", checkOut)
-        RequestManager.setOrder(makeOrder, object : RequestCallback<String> {
-            override fun onSuccess(data: String) {
+        RequestManager.setOrder(makeOrder, object : RequestCallback<EmptyResponseContainer> {
+            override fun onSuccess(data: EmptyResponseContainer) {
+                appPreference.saveCartProducts(mutableListOf())
+                startNavigationActivity()
                 Toast.makeText(applicationContext, "onSuccess", Toast.LENGTH_SHORT).show()
             }
 
@@ -107,5 +108,9 @@ class OrderingActivity : AppCompatActivity() {
         })
     }
 
-
+    fun startNavigationActivity() {
+        startActivity(Intent(this, NavigationActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        finishAffinity()
+    }
 }
