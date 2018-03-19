@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kr.sofac.itsskinapp.ui.ordering.OrderingFragment">
+    tools:context="kr.sofac.itsskinua.ui.ordering.OrderingFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
